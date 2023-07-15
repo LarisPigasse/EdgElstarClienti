@@ -35,7 +35,7 @@ const navigationConfig = [
             }, 
             {
                 key: 'tracking.update',
-                path: '/tracking/update',
+                path: '/tracking/aggiorna-spedizioni',
                 title: 'Aggiorna spedizioni',
                 translateKey: 'nav.tracking.update',
                 icon: '',
@@ -56,7 +56,7 @@ const navigationConfig = [
         subMenu: [
             {
                 key: 'crm.dashboard',
-                path: '/crm/dashboard',
+                path: '/crm/dashboard/',
                 title: 'Dashboard',
                 translateKey: 'nav.crm.dashboard',
                 icon: '',
@@ -66,7 +66,7 @@ const navigationConfig = [
             },
             {
                 key: 'crm.calendario',
-                path: '/crm/calendario',
+                path: '/crm/calendario/',
                 title: 'Calendario',
                 translateKey: 'nav.crm.calendario',
                 icon: '',
@@ -76,7 +76,7 @@ const navigationConfig = [
             },
             {
                 key: 'crm.clienti',
-                path: '/crm/clienti',
+                path: '/crm/clienti/',
                 title: 'Clienti',
                 translateKey: 'nav.crm.clienti',
                 icon: '',
@@ -86,7 +86,7 @@ const navigationConfig = [
             },              
             {
                 key: 'crm.mailbox',
-                path: '/crm/mailbox',
+                path: '/crm/mailbox/',
                 title: 'Mailbox',
                 translateKey: 'nav.crm.mailbox',
                 icon: '',
@@ -96,7 +96,7 @@ const navigationConfig = [
             }, 
             {
                 key: 'crm.comunica',
-                path: '/crm/comunica',
+                path: '/crm/comunica/',
                 title: 'Comunica',
                 translateKey: 'nav.crm.comunica',
                 icon: '',
@@ -117,7 +117,7 @@ const navigationConfig = [
         subMenu: [
             {
                 key: 'logistica.corrieri',
-                path: '/logistica/corrieri',
+                path: '/logistica/corrieri/',
                 title: 'Corrrieri',
                 translateKey: 'nav.logistica.corrieri',
                 icon: '',
@@ -127,7 +127,7 @@ const navigationConfig = [
             }, 
             {
                 key: 'logistica.magazzino',
-                path: '/logistica/magazzino',
+                path: '/logistica/magazzino/',
                 title: 'Magazzino',
                 translateKey: 'nav.logistica.magazzino',
                 icon: '',
@@ -148,7 +148,7 @@ const navigationConfig = [
         subMenu: [         
             {
                 key: 'admin.documenti',
-                path: '/amministrazione/documenti',
+                path: '/amministrazione/documenti/',
                 title: 'Documenti e fatture',
                 translateKey: 'nav.admin.documenti',
                 icon: '',
@@ -158,7 +158,7 @@ const navigationConfig = [
             }, 
             {
                 key: 'admin.pagamenti',
-                path: '/amministrazione/pagamenti',
+                path: '/amministrazione/pagamenti/',
                 title: 'Pagamenti',
                 translateKey: 'nav.admin.pagamenti',
                 icon: '',
@@ -179,7 +179,7 @@ const navigationConfig = [
         subMenu: [         
             {
                 key: 'sistema.configurazione',
-                path: '/sistema/configurazione',
+                path: '/sistema/configurazione/',
                 title: 'Configurazione',
                 translateKey: 'nav.sistema.configurazione',
                 icon: '',
@@ -189,7 +189,7 @@ const navigationConfig = [
             },
             {
                 key: 'sistema.account',
-                path: '/sistema/account',
+                path: '/sistema/account/',
                 title: 'Account',
                 translateKey: 'nav.sistema.account',
                 icon: '',
@@ -199,7 +199,7 @@ const navigationConfig = [
             },
             {
                 key: 'sistema.operatori',
-                path: '/sistema/operatori',
+                path: '/sistema/operatori/',
                 title: 'Operatori',
                 translateKey: 'nav.sistema.operatori',
                 icon: '',
@@ -208,8 +208,18 @@ const navigationConfig = [
                 subMenu: [],
             },
             {
+                key: 'sistema.operatoriDetails',
+                path: '/sistema/operatori-details/',
+                title: 'Dettaglio operatore',
+                translateKey: 'nav.sistema.operatoriDetails',
+                icon: '',
+                type: NAV_ITEM_TYPE_ITEM,
+                authority: [],
+                subMenu: [],
+            },            
+            {
                 key: 'sistema.statistiche',
-                path: '/sistema/statistiche',
+                path: '/sistema/statistiche/',
                 title: 'Report e Statistiche',
                 translateKey: 'nav.sistema.statistiche',
                 icon: '',
@@ -219,7 +229,7 @@ const navigationConfig = [
             },                                     
             {
                 key: 'sistema.tabelle',
-                path: '/sistema/tabelle',
+                path: '/sistema/tabelle/',
                 title: 'Tabelle di base',
                 translateKey: 'nav.sistema.tabelle',
                 icon: '',

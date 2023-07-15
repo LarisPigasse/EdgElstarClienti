@@ -1,7 +1,7 @@
 import React from 'react'
 
-const Update = () => {
+const AggiornaSpedizioni = () => {
     return <div>Aggiorna spedizioni</div>
 }
 
-export default Update
+export default AggiornaSpedizioni

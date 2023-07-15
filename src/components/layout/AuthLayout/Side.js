@@ -1,5 +1,4 @@
 import React, { cloneElement } from 'react'
-import { Avatar } from 'components/ui'
 import Logo from 'components/template/Logo'
 import { APP_NAME } from 'constants/app.constant'
 
@@ -23,18 +22,14 @@ const Side = ({ children, content, ...rest }) => {
                         </div>
                     </div>
                     <p className="text-lg text-white opacity-90">
-                        EDG ADMIN è il sistema di gestione di Express Delivery Group. 
-                        La web application implementa l'insieme dei moduli per il controllo di tutte le attività e i processi aziendali
+                        Gestione attività, processi e servizi. 
                     </p>
                 </div>
                 <div className=' h-64'>&nbsp</div>
-                <div>
-                    <img  src='logoEdgDark.png' alt={`${APP_NAME} logo`} />
-                </div>
+                <div className=' h-64'>&nbsp</div>
 
-                <span className="text-white">
-                    Copyright &copy; {`${new Date().getFullYear()}`}{' '}
-                    <span className="font-semibold">{`${APP_NAME}`}</span>{' '}
+                <span >
+                    <img  src='logoEdgDark.png' alt={`${APP_NAME} logo`} />
                 </span>
             </div>
             <div className="col-span-2 flex flex-col justify-center items-center bg-white dark:bg-gray-800">
