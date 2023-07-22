@@ -1,19 +1,26 @@
 import ApiService from './ApiService'
 
 export async function apiGetSistemaOperatori(params) {
-    console.log(params)
     return ApiService.fetchData({
-        url: '/getOperatoriFilter',
+        url: '/operatori/getOperatoriFilter',
         method: 'get',
         params,
     })
 }
 
-export async function apiDeleteSistemaOperatori(data) {
+export async function apiInsertOperatori(data) {
     return ApiService.fetchData({
-        url: '/sistema/operatori/delete',
-        method: 'delete',
+        url: '/operatori',
+        method: 'post',
         data,
+    })
+}
+
+
+export async function apiDeleteOperatori(id) {
+    return ApiService.fetchData({
+        url: `/operatori/${id}`,
+        method: 'delete'
     })
 }
 
@@ -24,8 +31,4 @@ export async function apiGetSistemaOperatoriDetails(params) {
         params,
     })
 }
-
-
-
-
 

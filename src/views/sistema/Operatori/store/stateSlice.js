@@ -1,11 +1,12 @@
 import { createSlice, current } from '@reduxjs/toolkit'
 
 const stateSlice = createSlice({
-    name: 'salesOrderList/state',
+    name: 'sistemaOperatore/state',
     initialState: {
         selectedRows: [],
         selectedRow: [],
         deleteMode: '',
+        modalOperatore: false
     },
     reducers: {
         setSelectedRows: (state, action) => {
@@ -35,6 +36,9 @@ const stateSlice = createSlice({
         setDeleteMode: (state, action) => {
             state.deleteMode = action.payload
         },
+        toggleModalNewOperatore: (state, action) => {
+            state.modalOperatore = action.payload
+        },
     },
 })
 
@@ -45,6 +49,7 @@ export const {
     removeRowItem,
     toggleDeleteConfirmation,
     setDeleteMode,
+    toggleModalNewOperatore
 } = stateSlice.actions
 
 export default stateSlice.reducer

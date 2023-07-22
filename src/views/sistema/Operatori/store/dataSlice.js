@@ -1,16 +1,22 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import { apiGetSistemaOperatori, apiDeleteSistemaOperatori } from 'services/OperatoriService'
+import { apiGetSistemaOperatori, apiDeleteOperatori, apiInsertOperatori } from 'services/OperatoriService'
 
 export const getOperatori = createAsyncThunk(
-    'salesProductList/data/getOrders',
+    'sistemaOperatore/data/getOrders',
     async (data) => {
         const response = await apiGetSistemaOperatori(data)
         return response.data
     }
 )
 
+export const insertOperatori = async ( data ) => {
+    const response = await apiInsertOperatori(data)
+    return response.data
+}
+
 export const deleteOperatori = async (data) => {
-    const response = await apiDeleteSistemaOperatori(data)
+    console.log(data);
+    const response = await apiDeleteOperatori(data)
     return response.data
 }
 
@@ -26,11 +32,11 @@ export const initialTableData = {
 }
 
 const dataSlice = createSlice({
-    name: 'sistemaOPeratori/data',
+    name: 'sistemaOperatore/data',
     initialState: {
         loading: false,
         orderList: [],
-        tableData: initialTableData,
+        tableData: initialTableData
     },
     reducers: {
         setOrderList: (state, action) => {

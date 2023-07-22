@@ -12,16 +12,16 @@ import { deleteOperatori, getOperatori } from '../store/dataSlice'
 const OperatoriDeleteConfirmation = () => {
     const dispatch = useDispatch()
     const selectedRows = useSelector(
-        (state) => state.sistemaOperatori.state.selectedRows
+        (state) => state.sistemaOperatore.state.selectedRows
     )
     const selectedRow = useSelector(
-        (state) => state.sistemaOperatori.state.selectedRow
+        (state) => state.sistemaOperatore.state.selectedRow
     )
     const deleteMode = useSelector(
-        (state) => state.sistemaOperatori.state.deleteMode
+        (state) => state.sistemaOperatore.state.deleteMode
     )
     const tableData = useSelector(
-        (state) => state.sistemaOperatori.data.tableData
+        (state) => state.sistemaOperatore.data.tableData
     )
 
     const onDialogClose = () => {
@@ -36,7 +36,7 @@ const OperatoriDeleteConfirmation = () => {
         dispatch(setDeleteMode(''))
 
         if (deleteMode === 'single') {
-            const success = await deleteOperatori({ id: selectedRow })
+            const success = await deleteOperatori(selectedRow)
             deleteSucceed(success)
             dispatch(setSelectedRow([]))
         }

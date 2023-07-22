@@ -34,17 +34,18 @@ const OperatoriColumn = ({ row }) => {
 }
 
 const ActionColumn = ({ row }) => {
+
   const dispatch = useDispatch()
   const { textTheme } = useThemeClass()
   const navigate = useNavigate()
 
   const onDelete = () => {
       dispatch(setDeleteMode('single'))
-      dispatch(setSelectedRow([row.id]))
+      dispatch(setSelectedRow(row.id_operatore))
   }
 
   const onView = useCallback(() => {
-      navigate(`/app/sistema/operatori-details/${row.id}`)
+      navigate(`/app/sistema/operatori-details/${row.id_operatore}`)
   }, [navigate, row])
 
   return (
@@ -77,11 +78,11 @@ const OperatoriTable = () => {
   const dispatch = useDispatch()
 
   const { pageIndex, pageSize, sort, query, total } = useSelector(
-      (state) => state.sistemaOperatori.data.tableData
+      (state) => state.sistemaOperatore.data.tableData
   )
-  const loading = useSelector((state) => state.sistemaOperatori.data.loading)
+  const loading = useSelector((state) => state.sistemaOperatore.data.loading)
 
-  const data = useSelector((state) => state.sistemaOperatori.data.orderList)
+  const data = useSelector((state) => state.sistemaOperatore.data.orderList)
 
   const fetchData = useCallback(() => {
       dispatch(getOperatori({ pageIndex, pageSize, sort, query }))

@@ -6,7 +6,7 @@ import OperatoriTable from './components/OperatoriTable'
 import OperatoriTableTools from './components/OperatoriTableTools'
 import OperatoriDeleteConfirmation from './components/OperatoriDeleteConfirmation'
 
-injectReducer('sistemaOperatori', reducer)
+injectReducer('sistemaOperatore', reducer)
 
 const Operatori = () => {
     return (
