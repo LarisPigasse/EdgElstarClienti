@@ -7,8 +7,8 @@ import FormNewOperatore from './FormNewOperatore'
 const ModalNewOperatore = () => {
     const dispatch = useDispatch()
 
-    const modalOperatore = useSelector(
-        (state) => state.sistemaOperatore.state.modalOperatore
+    const modalNewOperatore = useSelector(
+        (state) => state.sistemaOperatore.state.modalNewOperatore
     )
 
     const onDialogClose = () => {
@@ -17,7 +17,7 @@ const ModalNewOperatore = () => {
 
     return (
         <Dialog
-            isOpen={modalOperatore}
+            isOpen={modalNewOperatore}
             onClose={onDialogClose}
             onRequestClose={onDialogClose}
         >

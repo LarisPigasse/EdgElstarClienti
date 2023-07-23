@@ -5,6 +5,7 @@ import {
 } from 'react-icons/hi'
 
 import ModalNewOperatore from './ModalNewOperatore'
+import ModalUpdateOperatore from './ModalUpdateOperatore'
 import { Button, Input, Tooltip } from 'components/ui'
 
 import {
@@ -31,6 +32,7 @@ function OperatoriTableTools() {
        </Button>
       
       <ModalNewOperatore />
+      <ModalUpdateOperatore />
       
     </div>
   )

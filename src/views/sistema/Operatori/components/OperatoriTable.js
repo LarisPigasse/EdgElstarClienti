@@ -1,7 +1,7 @@
 import React, { useEffect, useCallback, useMemo, useRef } from 'react'
 import { Tooltip } from 'components/ui'
 import { DataTable } from 'components/shared'
-import { HiOutlineEye, HiOutlineTrash } from 'react-icons/hi'
+import { HiOutlineEye, HiOutlineTrash, HiOutlinePencil } from 'react-icons/hi'
 import { useDispatch, useSelector } from 'react-redux'
 import { getOperatori, setTableData } from '../store/dataSlice'
 import {
@@ -10,6 +10,8 @@ import {
     removeRowItem,
     setDeleteMode,
     setSelectedRow,
+    toggleModalUpdateOperatore,
+    setDataOperatore
 } from '../store/stateSlice'
 import useThemeClass from 'utils/hooks/useThemeClass'
 import { useNavigate } from 'react-router-dom'
@@ -39,6 +41,11 @@ const ActionColumn = ({ row }) => {
   const { textTheme } = useThemeClass()
   const navigate = useNavigate()
 
+  const onUpdate = () => {
+    dispatch(toggleModalUpdateOperatore(true))
+    dispatch(setDataOperatore(row))
+  }
+
   const onDelete = () => {
       dispatch(setDeleteMode('single'))
       dispatch(setSelectedRow(row.id_operatore))
@@ -50,7 +57,7 @@ const ActionColumn = ({ row }) => {
 
   return (
       <div className="flex justify-end text-lg">
-          <Tooltip title="View">
+          <Tooltip title="Vedi">
               <span
                   className={`cursor-pointer p-2 hover:${textTheme}`}
                   onClick={onView}
@@ -58,7 +65,15 @@ const ActionColumn = ({ row }) => {
                   <HiOutlineEye />
               </span>
           </Tooltip>
-          <Tooltip title="Delete">
+          <Tooltip title="Modifica">
+              <span
+                  className="cursor-pointer p-2 hover:text-blue-500"
+                  onClick={onUpdate}
+              >
+                  <HiOutlinePencil />
+              </span>
+          </Tooltip>
+          <Tooltip title="Elimina">
               <span
                   className="cursor-pointer p-2 hover:text-red-500"
                   onClick={onDelete}

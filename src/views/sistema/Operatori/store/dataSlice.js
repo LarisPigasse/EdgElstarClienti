@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import { apiGetSistemaOperatori, apiDeleteOperatori, apiInsertOperatori } from 'services/OperatoriService'
+import { apiGetSistemaOperatori, apiDeleteOperatori, apiInsertOperatori, apiUpdateOperatori } from 'services/OperatoriService'
 
 export const getOperatori = createAsyncThunk(
     'sistemaOperatore/data/getOrders',
@@ -11,6 +11,11 @@ export const getOperatori = createAsyncThunk(
 
 export const insertOperatori = async ( data ) => {
     const response = await apiInsertOperatori(data)
+    return response.data
+}
+
+export const updateOperatori = async ( data, params ) => {
+    const response = await apiUpdateOperatori(data, params)
     return response.data
 }
 

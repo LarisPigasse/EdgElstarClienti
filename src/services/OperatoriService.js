@@ -16,6 +16,13 @@ export async function apiInsertOperatori(data) {
     })
 }
 
+export async function apiUpdateOperatori(data, params) {
+    return ApiService.fetchData({
+        url: `/operatori/${params}`,
+        data,
+        method: 'put'
+    })
+}
 
 export async function apiDeleteOperatori(id) {
     return ApiService.fetchData({
