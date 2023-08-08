@@ -11,26 +11,28 @@ import {
     setDeleteMode,
     setSelectedRow,
     toggleModalUpdateOperatore,
+    toggleModalViewOperatore,
     setDataOperatore
 } from '../store/stateSlice'
 import useThemeClass from 'utils/hooks/useThemeClass'
-import { useNavigate } from 'react-router-dom'
 import cloneDeep from 'lodash/cloneDeep'
 
 const OperatoriColumn = ({ row }) => {
+  const dispatch = useDispatch()
   const { textTheme } = useThemeClass()
-  const navigate = useNavigate()
 
-  const onView = useCallback(() => {
-      navigate(`/app/sistema/operatori-details/${row.id}`)
-  }, [navigate, row])
+  const onView = () => {
+    console.log("ciao")
+    dispatch(toggleModalViewOperatore(true))
+    //dispatch(setDataOperatore(row))
+  } 
 
   return (
       <span
           className={`cursor-pointer select-none font-semibold hover:${textTheme}`}
           onClick={onView}
       >
-          #{row.id}
+          # {row.id_operatore}
       </span>
   )
 }
@@ -39,7 +41,6 @@ const ActionColumn = ({ row }) => {
 
   const dispatch = useDispatch()
   const { textTheme } = useThemeClass()
-  const navigate = useNavigate()
 
   const onUpdate = () => {
     dispatch(toggleModalUpdateOperatore(true))
@@ -51,13 +52,19 @@ const ActionColumn = ({ row }) => {
       dispatch(setSelectedRow(row.id_operatore))
   }
 
-  const onView = useCallback(() => {
-      navigate(`/app/sistema/operatori-details/${row.id_operatore}`)
-  }, [navigate, row])
+  const onView = () => {
+    console.log('ciaooo');
+    dispatch(toggleModalViewOperatore(true))
+   // dispatch(setDataOperatore(row))
+  } 
+//   const onView = useCallback(() => {
+//       navigate(`/app/sistema/operatori-details/${row.id_operatore}`)
+//   }, [navigate, row])
 
+  
   return (
       <div className="flex justify-end text-lg">
-          <Tooltip title="Vedi">
+          <Tooltip title="Dettagli operatore">
               <span
                   className={`cursor-pointer p-2 hover:${textTheme}`}
                   onClick={onView}

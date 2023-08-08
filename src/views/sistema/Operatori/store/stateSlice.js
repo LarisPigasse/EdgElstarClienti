@@ -6,8 +6,10 @@ const stateSlice = createSlice({
         selectedRows: [],
         selectedRow: [],
         deleteMode: '',
+        dataOperatore: '',
         modalNewOperatore: false,
         modalUpdateOperatore: false,
+        modalViewOperatore: false,
         statiOperatore: [{value:'ATTIVO',label:'ATTIVO'},{value:'INATTIVO',label:'INATTIVO'},{ value:'ELIMINATO',label:'ELIMINATO'}],
         profiliOperatore: [{value:'ADMIN',label:'ADMIN'},{value:'USER',label:'USER'}]
     },
@@ -45,6 +47,9 @@ const stateSlice = createSlice({
         toggleModalUpdateOperatore: (state, action) => {
             state.modalUpdateOperatore = action.payload
         },
+        toggleModalViewOperatore: (state, action) => {
+            state.modalViewOperatore = action.payload
+        },        
         setDataOperatore: (state, action) => {
             state.dataOperatore = action.payload
         },
@@ -60,6 +65,7 @@ export const {
     setDeleteMode,
     toggleModalNewOperatore,
     toggleModalUpdateOperatore,
+    toggleModalViewOperatore,
     setDataOperatore,
 } = stateSlice.actions
 

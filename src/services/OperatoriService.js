@@ -2,7 +2,7 @@ import ApiService from './ApiService'
 
 export async function apiGetSistemaOperatori(params) {
     return ApiService.fetchData({
-        url: '/operatori/getOperatoriFilter',
+        url: '/operatori/operatori-filter',
         method: 'get',
         params,
     })

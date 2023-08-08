@@ -6,6 +6,7 @@ import {
 
 import ModalNewOperatore from './ModalNewOperatore'
 import ModalUpdateOperatore from './ModalUpdateOperatore'
+import ModalViewOperatore from './ModalViewOperatore'
 import { Button, Input, Tooltip } from 'components/ui'
 
 import {
@@ -33,6 +34,7 @@ function OperatoriTableTools() {
       
       <ModalNewOperatore />
       <ModalUpdateOperatore />
+      <ModalViewOperatore />
       
     </div>
   )

@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { apiGetSistemaOperatori, apiDeleteOperatori, apiInsertOperatori, apiUpdateOperatori } from 'services/OperatoriService'
 
 export const getOperatori = createAsyncThunk(
-    'sistemaOperatore/data/getOrders',
+    'sistemaOperatore/data/getOperatori',
     async (data) => {
         const response = await apiGetSistemaOperatori(data)
         return response.data
