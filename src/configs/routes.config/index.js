@@ -93,13 +93,7 @@ export const protectedRoutes = [
         path: '/sistema/operatori/',
         component: React.lazy(() => import('views/sistema/Operatori')),
         authority: [],
-    }, 
-    {
-        key: 'sistema.operatoriDetails',
-        path: '/sistema/operatori-details/',
-        component: React.lazy(() => import('views/sistema/OperatoriDetails')),
-        authority: [],
-    },     
+    },    
     {
         key: 'sistema.statistiche',
         path: '/sistema/statistiche/',

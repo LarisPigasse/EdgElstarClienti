@@ -118,7 +118,7 @@ const navigationConfig = [
             {
                 key: 'logistica.corrieri',
                 path: '/logistica/corrieri/',
-                title: 'Corrrieri',
+                title: 'Corrieri',
                 translateKey: 'nav.logistica.corrieri',
                 icon: '',
                 type: NAV_ITEM_TYPE_ITEM,
@@ -206,17 +206,7 @@ const navigationConfig = [
                 type: NAV_ITEM_TYPE_ITEM,
                 authority: [],
                 subMenu: [],
-            },
-            {
-                key: 'sistema.operatoriDetails',
-                path: '/sistema/operatori-details/',
-                title: 'Dettaglio operatore',
-                translateKey: 'nav.sistema.operatoriDetails',
-                icon: '',
-                type: NAV_ITEM_TYPE_ITEM,
-                authority: [],
-                subMenu: [],
-            },            
+            },           
             {
                 key: 'sistema.statistiche',
                 path: '/sistema/statistiche/',

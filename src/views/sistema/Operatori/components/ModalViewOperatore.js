@@ -14,17 +14,24 @@ const ModalViewOperatore = () => {
         dispatch(toggleModalViewOperatore(false))
     }
 
+    const dataOperatore = useSelector(
+        (state) => state.sistemaOperatore.state.dataOperatore
+    )
+
     return (
         <Dialog
             isOpen={modalViewOperatore}
             onClose={onDialogClose}
             onRequestClose={onDialogClose}
-            width={1024}
+            width={768}
             height={256}
         >
-            <h4>Dettagi operatore</h4>
+            <h4>Dettagi operatore {dataOperatore.operatore}</h4>
             <div className="mt-4">
-                Qui ci va la scheda operatore
+                <div>Operatore: {dataOperatore.operatore}</div>
+                <div>Email: {dataOperatore.email}</div>
+                <div>Profilo: {dataOperatore.profilo}</div>
+                <div>Stato: {dataOperatore.stato}</div>
             </div>
         </Dialog>
     )

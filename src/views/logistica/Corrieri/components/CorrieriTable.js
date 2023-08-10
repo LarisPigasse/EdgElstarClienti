@@ -3,26 +3,26 @@ import { Tooltip } from 'components/ui'
 import { DataTable } from 'components/shared'
 import { HiOutlineEye, HiOutlineTrash, HiOutlinePencil } from 'react-icons/hi'
 import { useDispatch, useSelector } from 'react-redux'
-import { getOperatori, setTableData } from '../store/dataSlice'
+import { getCorrieri, setTableData } from '../store/dataSlice'
 import {
     setSelectedRows,
     addRowItem,
     removeRowItem,
     setDeleteMode,
     setSelectedRow,
-    toggleModalUpdateOperatore,
-    toggleModalViewOperatore,
-    setDataOperatore
+    toggleModalUpdateCorriere,
+    toggleModalViewCorriere,
+    setDataCorriere
 } from '../store/stateSlice'
 import useThemeClass from 'utils/hooks/useThemeClass'
 import cloneDeep from 'lodash/cloneDeep'
 
-const OperatoriColumn = ({ row }) => {
+const CorrieriColumn = ({ row }) => {
   const dispatch = useDispatch()
   const { textTheme } = useThemeClass()
 
   const onView = () => {
-    dispatch(toggleModalViewOperatore(true))
+    dispatch(toggleModalViewCorrieri(true))
     //dispatch(setDataOperatore(row))
   } 
 
@@ -42,28 +42,25 @@ const ActionColumn = ({ row }) => {
   const { textTheme } = useThemeClass()
 
   const onUpdate = () => {
-    dispatch(toggleModalUpdateOperatore(true))
-    dispatch(setDataOperatore(row))
+    dispatch(toggleModalUpdateCorriere(true))
+    dispatch(setDataCorriere(row))
   }
 
   const onDelete = () => {
       dispatch(setDeleteMode('single'))
-      dispatch(setSelectedRow(row.id_operatore))
+      dispatch(setSelectedRow(row.id_corriere))
   }
 
   const onView = () => {
     console.log('ciaooo');
-    dispatch(toggleModalViewOperatore(true))
+    dispatch(toggleModalViewCorriere(true))
    // dispatch(setDataOperatore(row))
   } 
-//   const onView = useCallback(() => {
-//       navigate(`/app/sistema/operatori-details/${row.id_operatore}`)
-//   }, [navigate, row])
 
   
   return (
       <div className="flex justify-end text-lg">
-          <Tooltip title="Dettagli operatore">
+          <Tooltip title="Dettagli corriere">
               <span
                   className={`cursor-pointer p-2 hover:${textTheme}`}
                   onClick={onView}
@@ -92,21 +89,21 @@ const ActionColumn = ({ row }) => {
 }
 
 
-const OperatoriTable = () => {
+const CorrieriTable = () => {
 
   const tableRef = useRef(null)
 
   const dispatch = useDispatch()
 
   const { pageIndex, pageSize, sort, query, total } = useSelector(
-      (state) => state.sistemaOperatore.data.tableData
+      (state) => state.logisticaCorriere.data.tableData
   )
-  const loading = useSelector((state) => state.sistemaOperatore.data.loading)
+  const loading = useSelector((state) => state.logisticaCorriere.data.loading)
 
-  const data = useSelector((state) => state.sistemaOperatore.data.orderList)
+  const data = useSelector((state) => state.logisticaCorriere.data.orderList)
 
   const fetchData = useCallback(() => {
-      dispatch(getOperatori({ pageIndex, pageSize, sort, query }))
+      dispatch(getCorrieri({ pageIndex, pageSize, sort, query }))
   }, [dispatch, pageIndex, pageSize, sort, query])
 
   useEffect(() => {
@@ -129,16 +126,16 @@ const OperatoriTable = () => {
       () => [
           {
               header: 'Id',
-              accessorKey: 'id_operatore',
-              cell: (props) => <OperatoriColumn row={props.row.original} />,
+              accessorKey: 'id_corriere',
+              cell: (props) => <CorrieriColumn row={props.row.original} />,
           },
           {
-              header: 'Operatore',
-              accessorKey: 'operatore',
+              header: 'Corriere',
+              accessorKey: 'corriere',
           },
           {
-            header: 'Email',
-            accessorKey: 'email',
+            header: 'Endpoint',
+            accessorKey: 'endpoint',
           },
           {
               header: '',
@@ -209,4 +206,4 @@ const OperatoriTable = () => {
   )
 }
 
-export default OperatoriTable
+export default CorrieriTable

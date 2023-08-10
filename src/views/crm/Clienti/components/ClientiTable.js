@@ -3,26 +3,26 @@ import { Tooltip } from 'components/ui'
 import { DataTable } from 'components/shared'
 import { HiOutlineEye, HiOutlineTrash, HiOutlinePencil } from 'react-icons/hi'
 import { useDispatch, useSelector } from 'react-redux'
-import { getOperatori, setTableData } from '../store/dataSlice'
+import { getClienti, setTableData } from '../store/dataSlice'
 import {
     setSelectedRows,
     addRowItem,
     removeRowItem,
     setDeleteMode,
     setSelectedRow,
-    toggleModalUpdateOperatore,
-    toggleModalViewOperatore,
-    setDataOperatore
+    toggleModalUpdateCliente,
+    toggleModalViewCliente,
+    setDataCliente
 } from '../store/stateSlice'
 import useThemeClass from 'utils/hooks/useThemeClass'
 import cloneDeep from 'lodash/cloneDeep'
 
-const OperatoriColumn = ({ row }) => {
+const ClientiColumn = ({ row }) => {
   const dispatch = useDispatch()
   const { textTheme } = useThemeClass()
 
   const onView = () => {
-    dispatch(toggleModalViewOperatore(true))
+    dispatch(toggleModalViewCliente(true))
     //dispatch(setDataOperatore(row))
   } 
 
@@ -31,7 +31,7 @@ const OperatoriColumn = ({ row }) => {
           className={`cursor-pointer select-none hover:${textTheme}`}
           onClick={onView}
       >
-          <span className=' text-neutral-400 text-xs'>#</span> <span className=' text-sky-500 font-semibold '>{row.id_operatore}</span>
+          <span className=' text-neutral-400 text-xs'>#</span> <span className=' text-sky-500 font-semibold '>{row.id_cliente}</span>
       </span>
   )
 }
@@ -42,28 +42,23 @@ const ActionColumn = ({ row }) => {
   const { textTheme } = useThemeClass()
 
   const onUpdate = () => {
-    dispatch(toggleModalUpdateOperatore(true))
-    dispatch(setDataOperatore(row))
+    dispatch(toggleModalUpdateCliente(true))
+    dispatch(setDataCliente(row))
   }
 
   const onDelete = () => {
       dispatch(setDeleteMode('single'))
-      dispatch(setSelectedRow(row.id_operatore))
+      dispatch(setSelectedRow(row.id_cliente))
   }
 
   const onView = () => {
-    console.log('ciaooo');
-    dispatch(toggleModalViewOperatore(true))
+    dispatch(toggleModalViewCliente(true))
    // dispatch(setDataOperatore(row))
   } 
-//   const onView = useCallback(() => {
-//       navigate(`/app/sistema/operatori-details/${row.id_operatore}`)
-//   }, [navigate, row])
-
   
   return (
       <div className="flex justify-end text-lg">
-          <Tooltip title="Dettagli operatore">
+          <Tooltip title="Dettagli cliente">
               <span
                   className={`cursor-pointer p-2 hover:${textTheme}`}
                   onClick={onView}
@@ -92,21 +87,21 @@ const ActionColumn = ({ row }) => {
 }
 
 
-const OperatoriTable = () => {
+const ClientiTable = () => {
 
   const tableRef = useRef(null)
 
   const dispatch = useDispatch()
 
   const { pageIndex, pageSize, sort, query, total } = useSelector(
-      (state) => state.sistemaOperatore.data.tableData
+      (state) => state.crmCliente.data.tableData
   )
-  const loading = useSelector((state) => state.sistemaOperatore.data.loading)
+  const loading = useSelector((state) => state.crmCliente.data.loading)
 
-  const data = useSelector((state) => state.sistemaOperatore.data.orderList)
+  const data = useSelector((state) => state.crmCliente.data.orderList)
 
   const fetchData = useCallback(() => {
-      dispatch(getOperatori({ pageIndex, pageSize, sort, query }))
+      dispatch(getClienti({ pageIndex, pageSize, sort, query }))
   }, [dispatch, pageIndex, pageSize, sort, query])
 
   useEffect(() => {
@@ -129,13 +124,17 @@ const OperatoriTable = () => {
       () => [
           {
               header: 'Id',
-              accessorKey: 'id_operatore',
-              cell: (props) => <OperatoriColumn row={props.row.original} />,
+              accessorKey: 'id_cliente',
+              cell: (props) => <ClientiColumn row={props.row.original} />,
           },
           {
-              header: 'Operatore',
-              accessorKey: 'operatore',
+              header: 'Cliente',
+              accessorKey: 'cliente',
           },
+          {
+            header: 'Partita IVA',
+            accessorKey: 'partita_iva',
+        },          
           {
             header: 'Email',
             accessorKey: 'email',
@@ -209,4 +208,4 @@ const OperatoriTable = () => {
   )
 }
 
-export default OperatoriTable
+export default ClientiTable

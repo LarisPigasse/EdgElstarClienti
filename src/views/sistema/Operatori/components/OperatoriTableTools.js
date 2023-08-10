@@ -22,14 +22,13 @@ function OperatoriTableTools() {
 
   return (
     <div>
-      OperatoriTableTools
       <Button
           size="sm"
           variant="twoTone"
           icon={<HiOutlinePlusCircle />}
           onClick={onAddNewOperatore}
       >
-        New operatore
+        Nuovo operatore
        </Button>
       
       <ModalNewOperatore />

@@ -33,7 +33,7 @@ export async function apiDeleteOperatori(id) {
 
 export async function apiGetSistemaOperatoriDetails(params) {
     return ApiService.fetchData({
-        url: '/sales/orders-details',
+        url: '/operatori/operatori-details',
         method: 'get',
         params,
     })
