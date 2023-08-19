@@ -22,7 +22,7 @@ const CorrieriColumn = ({ row }) => {
   const { textTheme } = useThemeClass()
 
   const onView = () => {
-    dispatch(toggleModalViewCorrieri(true))
+    dispatch(toggleModalViewCorriere(true))
     //dispatch(setDataOperatore(row))
   } 
 

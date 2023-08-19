@@ -16,6 +16,7 @@ const ModalNewCliente = () => {
     }
 
     return (
+
         <Dialog
             isOpen={modalNewCliente}
             onClose={onDialogClose}

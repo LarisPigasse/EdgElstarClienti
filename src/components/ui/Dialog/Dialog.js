@@ -72,12 +72,12 @@ const Dialog = (props) => {
                 beforeClose: 'dialog-before-close',
             }}
             overlayClassName={{
-                base: classNames('dialog-overlay', overlayClassName),
+                base: classNames('dialog-overlay h-full overflow-y-auto', overlayClassName),
                 afterOpen: 'dialog-overlay-after-open',
                 beforeClose: 'dialog-overlay-before-close',
             }}
             portalClassName={classNames('dialog-portal', portalClassName)}
-            bodyOpenClassName={classNames('dialog-open', bodyOpenClassName)}
+            bodyOpenClassName={classNames('dialog-open overflow-hidden', bodyOpenClassName)}
             ariaHideApp={false}
             isOpen={isOpen}
             style={{ ...contentStyle }}
