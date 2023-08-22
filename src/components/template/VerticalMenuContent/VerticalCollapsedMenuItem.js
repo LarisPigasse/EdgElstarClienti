@@ -14,7 +14,7 @@ const DefaultItem = ({ nav, onLinkClick, userAuthority }) => {
                 label={
                     <>
                         <VerticalMenuIcon icon={nav.icon} />
-                        <span>
+                        <span className={nav.colore}>
                             <Trans
                                 i18nKey={nav.translateKey}
                                 defaults={nav.title}
@@ -25,7 +25,7 @@ const DefaultItem = ({ nav, onLinkClick, userAuthority }) => {
                 key={nav.key}
                 eventKey={nav.key}
                 expanded={false}
-                className="mb-2"
+                className="mb-2 text-red-600"
             >
                 {nav.subMenu.map((subNav) => (
                     <AuthorityCheck
@@ -36,7 +36,7 @@ const DefaultItem = ({ nav, onLinkClick, userAuthority }) => {
                         <MenuItem eventKey={subNav.key}>
                             {subNav.path ? (
                                 <Link
-                                    className="h-full w-full flex items-center"
+                                    className={ `h-full w-full flex items-center ${nav.colore}` }
                                     onClick={() =>
                                         onLinkClick?.({
                                             key: subNav.key,
@@ -54,7 +54,7 @@ const DefaultItem = ({ nav, onLinkClick, userAuthority }) => {
                                     </span>
                                 </Link>
                             ) : (
-                                <span>
+                                <span class="text-yellow-700">
                                     <Trans
                                         i18nKey={subNav.translateKey}
                                         defaults={subNav.title}
@@ -104,7 +104,7 @@ const CollapsedItem = ({ nav, onLinkClick, userAuthority, direction }) => {
                                     }
                                     to={subNav.path}
                                 >
-                                    <span>
+                                    <span> 
                                         <Trans
                                             i18nKey={subNav.translateKey}
                                             defaults={subNav.title}

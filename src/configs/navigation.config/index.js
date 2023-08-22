@@ -13,14 +13,17 @@ const navigationConfig = [
         type: NAV_ITEM_TYPE_ITEM,
         authority: [],
         subMenu: [],
+        colore: 'text-red-500'
     },
     {
         key: 'tracking',
+        colore: 'text-red-500',
         path: '',
         title: 'Tracking',
         translateKey: 'nav.tracking',
         icon: 'monitor',
         type: NAV_ITEM_TYPE_COLLAPSE,
+        stato: 'ATTIVO',
         authority: [],
         subMenu: [         
             {
@@ -29,6 +32,7 @@ const navigationConfig = [
                 title: 'Spedizioni',
                 translateKey: 'nav.tracking.spedizioni',
                 icon: '',
+                stato: 'ATTIVO',
                 type: NAV_ITEM_TYPE_ITEM,
                 authority: [],
                 subMenu: [],

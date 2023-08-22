@@ -22,7 +22,6 @@ const CollapsedItem = ({ title, translateKey, children, direction }) => {
 
 const DefaultItem = (props) => {
     const { nav, onLinkClick, sideCollapsed, userAuthority } = props
-
     return (
         <AuthorityCheck userAuthority={userAuthority} authority={nav.authority}>
             <MenuItem key={nav.key} eventKey={nav.key} className="mb-2">
@@ -35,11 +34,11 @@ const DefaultItem = (props) => {
                             path: nav.path,
                         })
                     }
-                    className="flex items-center h-full w-full"
+                    className={`flex items-center h-full w-full `}
                 >
                     <VerticalMenuIcon icon={nav.icon} />
                     {!sideCollapsed && (
-                        <span>
+                        <span className={`${nav.colore}`}>
                             <Trans
                                 i18nKey={nav.translateKey}
                                 defaults={nav.title}

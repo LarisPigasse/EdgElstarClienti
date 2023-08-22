@@ -92,10 +92,11 @@ function useAuth() {
         dispatch(onSignOutSuccess())
         dispatch(setUser(initialState))
         navigate(appConfig.unAuthenticatedEntryPath)
+        localStorage.clear();
     }
 
     const signOut = async () => {
-        await apiSignOut()
+        //await apiSignOut()
         handleSignOut()
     }
 
