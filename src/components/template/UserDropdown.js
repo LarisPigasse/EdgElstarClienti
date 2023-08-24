@@ -22,7 +22,7 @@ export const UserDropdown = ({ className }) => {
             <Avatar size={32} shape="circle" icon={<HiOutlineUser />} />
             <div className="hidden md:block">
                 <div className="text-xs capitalize"></div>
-                <div className="font-bold">{userInfo.email}</div>
+                <div className="font-bold">{userInfo.account}</div>
             </div>
         </div>
     )

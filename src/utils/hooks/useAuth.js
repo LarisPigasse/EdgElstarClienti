@@ -23,6 +23,7 @@ function useAuth() {
 
             if (resp.data) {
                 const { token } = resp.data.utente
+                resp.data.utente['authority'] = resp.data.utente.tipo_account.split(',')
                 dispatch(onSignInSuccess(token))
                 if (resp.data.utente) {
                     dispatch(

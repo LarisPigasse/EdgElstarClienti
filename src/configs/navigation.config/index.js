@@ -3,6 +3,8 @@ import {
     NAV_ITEM_TYPE_ITEM,
 } from 'constants/navigation.constant'
 
+import { ADMIN, ROOT, CLIENTE, OPERATORE } from '../../constants/roles.constant'
+
 const navigationConfig = [
     {
         key: 'home',
@@ -15,6 +17,7 @@ const navigationConfig = [
         subMenu: [],
         colore: 'text-red-500'
     },
+
     {
         key: 'tracking',
         colore: 'text-red-500',
@@ -23,7 +26,6 @@ const navigationConfig = [
         translateKey: 'nav.tracking',
         icon: 'monitor',
         type: NAV_ITEM_TYPE_COLLAPSE,
-        stato: 'ATTIVO',
         authority: [],
         subMenu: [         
             {
@@ -32,9 +34,8 @@ const navigationConfig = [
                 title: 'Spedizioni',
                 translateKey: 'nav.tracking.spedizioni',
                 icon: '',
-                stato: 'ATTIVO',
                 type: NAV_ITEM_TYPE_ITEM,
-                authority: [],
+                authority: [ADMIN,OPERATORE],
                 subMenu: [],
             }, 
             {
@@ -44,9 +45,20 @@ const navigationConfig = [
                 translateKey: 'nav.tracking.update',
                 icon: '',
                 type: NAV_ITEM_TYPE_ITEM,
-                authority: [],
+                authority: [ADMIN,OPERATORE],
                 subMenu: [],
-            },                        
+            },
+            {
+                key: 'tracking.spedizioni.clienti',
+                path: '/tracking/spedizioni-clienti',
+                title: 'Spedizioni cliente',
+                translateKey: 'nav.tracking.spedizioni.clienti',
+                icon: '',
+                stato: 'ATTIVO',
+                type: NAV_ITEM_TYPE_ITEM,
+                authority: [CLIENTE],
+                subMenu: [],
+            },
         ],
     },    
     {
@@ -105,7 +117,7 @@ const navigationConfig = [
                 translateKey: 'nav.crm.comunica',
                 icon: '',
                 type: NAV_ITEM_TYPE_ITEM,
-                authority: [],
+                authority: [ROOT],
                 subMenu: [],
             },                                                           
         ],
