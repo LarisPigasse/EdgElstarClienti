@@ -8,6 +8,22 @@ export async function apiGetSpedizioni(params) {
     })
 }
 
+export async function apiGetSpedizioniClienti(params) {
+    return ApiService.fetchData({
+        url: '/spedizioni/spedizioni-filter-clienti',
+        method: 'get',
+        params,
+    })
+}
+
+export async function apiGetSpedizioniClientiArchiviate(params) {
+    return ApiService.fetchData({
+        url: '/spedizioni/spedizioni-filter-clienti-archiviate',
+        method: 'get',
+        params,
+    })
+}
+
 export async function apiInsertSpedizioni(data) {
     return ApiService.fetchData({
         url: '/spedizioni',

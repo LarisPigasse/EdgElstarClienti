@@ -56,7 +56,7 @@ const navigationConfig = [
                 icon: '',
                 stato: 'ATTIVO',
                 type: NAV_ITEM_TYPE_ITEM,
-                authority: [CLIENTE],
+                authority: [],
                 subMenu: [],
             },
         ],

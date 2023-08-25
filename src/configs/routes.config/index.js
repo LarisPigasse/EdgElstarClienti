@@ -21,7 +21,7 @@ export const protectedRoutes = [
         key: 'tracking.spedizioni.clienti',
         path: '/tracking/spedizioni-clienti',
         component: React.lazy(() => import('views/tracking/SpedizioniClienti')),
-        authority: [CLIENTE],
+        authority: [],
     },
     {
         key: 'tracking.update',

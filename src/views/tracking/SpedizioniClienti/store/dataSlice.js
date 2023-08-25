@@ -1,29 +1,22 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import { apiGetSpedizioni, apiDeleteSpedizioni, apiInsertSpedizioni, apiUpdateSpedizioni } from 'services/SpedizioniService'
+import { apiGetSpedizioniClienti, apiGetSpedizioniClientiArchiviate } from 'services/SpedizioniService'
 
-export const getSpedizioni = createAsyncThunk(
-    'trackingSpedizioni/data/getSpedizioni',
+export const getSpedizioniClienti = createAsyncThunk(
+    'trackingSpedizioni/data/getSpedizioniClienti',
     async (data) => {
-        const response = await apiGetSpedizioni(data)
+        console.log(data)
+        const response = await apiGetSpedizioniClienti(data)
         return response.data
     }
 )
 
-export const insertSpedizioni = async ( data ) => {
-    const response = await apiInsertSpedizioni(data)
-    return response.data
-}
-
-export const updateSpedizioni = async ( data, params ) => {
-    const response = await apiUpdateSpedizioni(data, params)
-    return response.data
-}
-
-export const deleteSpedizioni = async (data) => {
-    console.log(data);
-    const response = await apiDeleteSpedizioni(data)
-    return response.data
-}
+export const getSpedizioniArchiviate = createAsyncThunk(
+    'trackingSpedizioni/data/getSpedizioniClientiArchiviate',
+    async (data) => {
+        const response = await apiGetSpedizioniClientiArchiviate(data)
+        return response.data
+    }
+)
 
 export const initialTableData = {
     total: 0,
@@ -52,12 +45,20 @@ const dataSlice = createSlice({
         },
     },
     extraReducers: {
-        [getSpedizioni.fulfilled]: (state, action) => {
+        [getSpedizioniClienti.fulfilled]: (state, action) => {
             state.orderList = action.payload.data
             state.tableData.total = action.payload.total
             state.loading = false
         },
-        [getSpedizioni.pending]: (state) => {
+        [getSpedizioniClienti.pending]: (state) => {
+            state.loading = true
+        },
+        [getSpedizioniArchiviate.fulfilled]: (state, action) => {
+            state.orderList = action.payload.data
+            state.tableData.total = action.payload.total
+            state.loading = false
+        },
+        [getSpedizioniArchiviate.pending]: (state) => {
             state.loading = true
         },
     },

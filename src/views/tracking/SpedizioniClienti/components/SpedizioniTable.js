@@ -3,7 +3,7 @@ import { Tooltip } from 'components/ui'
 import { DataTable } from 'components/shared'
 import { HiOutlineEye, HiOutlineTrash, HiOutlinePencil } from 'react-icons/hi'
 import { useDispatch, useSelector } from 'react-redux'
-import { getSpedizioni, setTableData } from '../store/dataSlice'
+import { getSpedizioniClienti, setTableData } from '../store/dataSlice'
 import {
     setSelectedRows,
     addRowItem,
@@ -105,7 +105,7 @@ const SpedizioniTable = () => {
   const data = useSelector((state) => state.trackingSpedizioni.data.orderList)
 
   const fetchData = useCallback(() => {
-      dispatch(getSpedizioni({ pageIndex, pageSize, sort, query }))
+      dispatch(getSpedizioniClienti({ pageIndex, pageSize, sort, query }))
   }, [dispatch, pageIndex, pageSize, sort, query])
 
   useEffect(() => {
@@ -142,11 +142,7 @@ const SpedizioniTable = () => {
           {
             header: 'Destinatario',
             accessorKey: 'destinatario',
-          },
-          {
-            header: 'Stato',
-            accessorKey: 'stato',
-          },                    
+          },                  
           {
               header: '',
               id: 'action',
