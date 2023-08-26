@@ -56,7 +56,7 @@ const CustomControlMulti = ({ children, data, ...props }) => {
 }
 
 const validationSchema = Yup.object().shape({
-    corriere: Yup.string().min(3, 'Too Short!').required('corriere required'),
+    corriere: Yup.string().min(3, 'Too Short!').required('corriere requi'),
 })
 
 const FormNewCorriere = () => {
@@ -121,7 +121,7 @@ const FormNewCorriere = () => {
                             <Field
                                 type="text"
                                 autoComplete="off"
-                                name="Corriere"
+                                name="corriere"
                                 placeholder="Enter Corriere"
                                 component={Input}
                             />
@@ -152,7 +152,7 @@ const FormNewCorriere = () => {
                                         className="min-w-[120px]"
                                         field={field}
                                         form={form}
-                                        options={[{value:'Attivo',label:'Attivo'},{value:'Inattivo',label:'Inattivo'}]}
+                                        options={[{value:'ATTIVO',label:'ATTIVO'},{value:'INATTIVO',label:'INATTIVO'}]}
                                         value={values.stato}
                                         onChange={(data) => {
                                             console.log(field);
