@@ -16,6 +16,7 @@ import {
 } from '../store/stateSlice'
 import useThemeClass from 'utils/hooks/useThemeClass'
 import cloneDeep from 'lodash/cloneDeep'
+import dayjs from 'dayjs'
 
 const SpedizioniColumn = ({ row }) => {
   const dispatch = useDispatch()
@@ -31,9 +32,24 @@ const SpedizioniColumn = ({ row }) => {
           className={`cursor-pointer select-none hover:${textTheme}`}
           onClick={onView}
       >
-          <span className=' text-neutral-400 text-xs'>#</span> <span className=' text-sky-500 font-semibold '>{row.id_spedizione}</span>
+          <span className=' text-sky-500 font-semibold '>{row.id_spedizione}</span>
       </span>
   )
+}
+
+const SpedizioniData = ({ row }) => {
+    const dispatch = useDispatch()
+    const { textTheme } = useThemeClass()
+  
+    const onView = () => {
+      dispatch(toggleModalViewSpedizioni(true))
+      //dispatch(setDataSpedizioni(row))
+    } 
+  
+    return (
+        <span>{dayjs(row.data_spedizione).format('DD/MM/YYYY')}</span>
+
+    )
 }
 
 const ActionColumn = ({ row }) => {
@@ -134,7 +150,12 @@ const SpedizioniTable = () => {
           {
               header: 'Data spedizione',
               accessorKey: 'data_spedizione',
+              cell: (props) => <SpedizioniData row={props.row.original} />,
           },
+          {
+            header: 'Cliente',
+            accessorKey: 'cliente',
+          },          
           {
             header: 'Destinazione',
             accessorKey: 'destinazione',

@@ -25,7 +25,7 @@ const DefaultItem = ({ nav, onLinkClick, userAuthority }) => {
                 key={nav.key}
                 eventKey={nav.key}
                 expanded={false}
-                className="mb-2 text-sky-600"
+                className="mb-2"
             >
                 {nav.subMenu.map((subNav) => (
                     <AuthorityCheck
@@ -36,7 +36,7 @@ const DefaultItem = ({ nav, onLinkClick, userAuthority }) => {
                         <MenuItem eventKey={subNav.key}>
                             {subNav.path ? (
                                 <Link
-                                    className={ `h-full w-full flex items-center ${nav.colore}` }
+                                    className={ `h-full w-full flex items-center` }
                                     onClick={() =>
                                         onLinkClick?.({
                                             key: subNav.key,
@@ -46,7 +46,7 @@ const DefaultItem = ({ nav, onLinkClick, userAuthority }) => {
                                     }
                                     to={subNav.path}
                                 >
-                                    <span>
+                                    <span className={subNav.colore}>
                                         <Trans
                                             i18nKey={subNav.translateKey}
                                             defaults={subNav.title}
@@ -54,7 +54,7 @@ const DefaultItem = ({ nav, onLinkClick, userAuthority }) => {
                                     </span>
                                 </Link>
                             ) : (
-                                <span class="text-yellow-700">
+                                <span class=''>
                                     <Trans
                                         i18nKey={subNav.translateKey}
                                         defaults={subNav.title}

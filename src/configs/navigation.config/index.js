@@ -15,16 +15,16 @@ const navigationConfig = [
         type: NAV_ITEM_TYPE_ITEM,
         authority: [],
         subMenu: [],
-        colore: 'text-red-500'
+        colore: ''
     },
 
     {
         key: 'tracking',
-        colore: 'text-red-500',
         path: '',
         title: 'Tracking',
         translateKey: 'nav.tracking',
         icon: 'monitor',
+        colore: 'text-sky-500',
         type: NAV_ITEM_TYPE_COLLAPSE,
         authority: [],
         subMenu: [         
@@ -34,6 +34,7 @@ const navigationConfig = [
                 title: 'Spedizioni',
                 translateKey: 'nav.tracking.spedizioni',
                 icon: '',
+                colore: 'text-red-500',
                 type: NAV_ITEM_TYPE_ITEM,
                 authority: [ADMIN,OPERATORE],
                 subMenu: [],
@@ -44,6 +45,7 @@ const navigationConfig = [
                 title: 'Aggiorna spedizioni',
                 translateKey: 'nav.tracking.update',
                 icon: '',
+                colore: 'text-red-500',
                 type: NAV_ITEM_TYPE_ITEM,
                 authority: [ADMIN,OPERATORE],
                 subMenu: [],
@@ -54,6 +56,7 @@ const navigationConfig = [
                 title: 'Spedizioni cliente',
                 translateKey: 'nav.tracking.spedizioni.clienti',
                 icon: '',
+                colore: 'text-red-500',
                 stato: 'ATTIVO',
                 type: NAV_ITEM_TYPE_ITEM,
                 authority: [],
@@ -67,6 +70,7 @@ const navigationConfig = [
         title: 'Crm',
         translateKey: 'nav.crm',
         icon: 'crm',
+        colore: 'text-sky-500',
         type: NAV_ITEM_TYPE_COLLAPSE,
         authority: [],
         subMenu: [
@@ -96,6 +100,7 @@ const navigationConfig = [
                 title: 'Clienti',
                 translateKey: 'nav.crm.clienti',
                 icon: '',
+                colore: 'text-red-500',
                 type: NAV_ITEM_TYPE_ITEM,
                 authority: [],
                 subMenu: [],
@@ -128,6 +133,7 @@ const navigationConfig = [
         title: 'Logistica',
         translateKey: 'nav.logistica',
         icon: 'admin',
+        colore: 'text-sky-500',
         type: NAV_ITEM_TYPE_COLLAPSE,
         authority: [],
         subMenu: [
@@ -137,6 +143,7 @@ const navigationConfig = [
                 title: 'Corrieri',
                 translateKey: 'nav.logistica.corrieri',
                 icon: '',
+                colore: 'text-red-500',
                 type: NAV_ITEM_TYPE_ITEM,
                 authority: [],
                 subMenu: [],
@@ -190,6 +197,7 @@ const navigationConfig = [
         title: 'Sistema',
         translateKey: 'nav.sistema',
         icon: 'setup',
+        colore: 'text-sky-500',
         type: NAV_ITEM_TYPE_COLLAPSE,
         authority: [],
         subMenu: [         
@@ -209,6 +217,7 @@ const navigationConfig = [
                 title: 'Account',
                 translateKey: 'nav.sistema.account',
                 icon: '',
+                colore: 'text-red-500',
                 type: NAV_ITEM_TYPE_ITEM,
                 authority: [],
                 subMenu: [],
@@ -219,6 +228,7 @@ const navigationConfig = [
                 title: 'Operatori',
                 translateKey: 'nav.sistema.operatori',
                 icon: '',
+                colore: 'text-red-500',
                 type: NAV_ITEM_TYPE_ITEM,
                 authority: [],
                 subMenu: [],

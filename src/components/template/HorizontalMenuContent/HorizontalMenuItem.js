@@ -19,7 +19,7 @@ const HorizontalMenuItem = ({ nav, isLink, manuVariant }) => {
                     {itemTitle}
                 </HorizontalMenuNavLink>
             ) : (
-                <span>{itemTitle}</span>
+                <span className={`${nav.colore}`}>{itemTitle}</span>
             )}
         </MenuItem>
     )
