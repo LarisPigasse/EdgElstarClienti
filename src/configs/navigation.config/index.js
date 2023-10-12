@@ -62,6 +62,17 @@ const navigationConfig = [
                 authority: [],
                 subMenu: [],
             },
+            {
+                key: 'tracking.spedizioni.new',
+                path: '/tracking/spedizioni-new',
+                title: 'Nuova spedizione',
+                translateKey: 'nav.tracking.spedizioni.new',
+                icon: '',
+                colore: 'text-red-500',
+                type: NAV_ITEM_TYPE_ITEM,
+                authority: [ADMIN,OPERATORE],
+                subMenu: [],
+            },             
         ],
     },    
     {

@@ -6,7 +6,7 @@ const stateSlice = createSlice({
         selectedRows: [],
         selectedRow: [],
         deleteMode: '',
-        dataSpedizioni: '',
+        dataSpedizioni: {},
         modalNewSpedizioni: false,
         modalUpdateSpedizioni: false,
         modalViewSpedizioni: false,

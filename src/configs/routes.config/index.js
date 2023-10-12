@@ -30,6 +30,12 @@ export const protectedRoutes = [
         authority: [ADMIN,OPERATORE],
     },
     {
+        key: 'tracking.spedizioni.new',
+        path: '/tracking/spedizioni-new',
+        component: React.lazy(() => import('views/tracking/SpedizioniNew')),
+        authority: [ADMIN,OPERATORE],
+    },    
+    {
         key: 'crm.dashboard',
         path: '/crm/dashboard/',
         component: React.lazy(() => import('views/crm/Dashboard')),

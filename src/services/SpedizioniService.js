@@ -1,5 +1,13 @@
 import ApiService from './ApiService'
 
+
+export async function apiGetTrackingSpedizione(id) {
+    return ApiService.fetchData({
+        url: `/spedizioni/tracking/${id}`,
+        method: 'get',
+    })
+}
+
 export async function apiGetSpedizioni(params) {
     return ApiService.fetchData({
         url: '/spedizioni/spedizioni-filter',

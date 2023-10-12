@@ -24,9 +24,9 @@ const SpedizioniColumn = ({ row }) => {
 
   const onView = () => {
     dispatch(toggleModalViewSpedizioni(true))
-    //dispatch(setDataSpedizioni(row))
-  } 
+    dispatch(setDataSpedizioni(row))
 
+  }
   return (
       <span
           className={`cursor-pointer select-none hover:${textTheme}`}
@@ -68,6 +68,7 @@ const ActionColumn = ({ row }) => {
   }
 
   const onView = () => {
+    console.log("CIAO")
     dispatch(toggleModalViewSpedizioni(true))
    // dispatch(setDataSpedizioni(row))
   } 
@@ -148,14 +149,18 @@ const SpedizioniTable = () => {
               cell: (props) => <SpedizioniColumn row={props.row.original} />,
           },
           {
-              header: 'Data spedizione',
+              header: 'Data',
               accessorKey: 'data_spedizione',
               cell: (props) => <SpedizioniData row={props.row.original} />,
           },
           {
             header: 'Cliente',
             accessorKey: 'cliente',
-          },          
+          },
+          {
+            header: 'Corriere',
+            accessorKey: 'corriere',
+          },                    
           {
             header: 'Destinazione',
             accessorKey: 'destinazione',

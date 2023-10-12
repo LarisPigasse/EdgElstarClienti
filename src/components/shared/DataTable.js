@@ -213,7 +213,7 @@ const DataTable = forwardRef((props, ref) => {
                                                         .header,
                                                     header.getContext()
                                                 )}
-                                                {header.column.getCanSort() && <Sorter sort={header.column.getIsSorted()} />}
+                                                {/* {header.column.getCanSort() && <Sorter sort={header.column.getIsSorted()} />} */}
                                             </div>
                                         )}
                                     </Th>
