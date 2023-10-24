@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Dialog, Button } from 'components/ui'
 import { toggleModalViewSpedizioni, } from '../store/stateSlice'
 import { getTrackingSpedizione } from '../store/dataSlice'
@@ -16,23 +16,23 @@ const ModalViewSpedizioni = () => {
 
     const onDialogClose = () => {
         dispatch(toggleModalViewSpedizioni(false))
+        setTracking([])
     }
 
     const dataSpedizioni = useSelector(
         (state) => state.trackingSpedizioni.state.dataSpedizioni
     )
 
-    const fetchData = useCallback(async () => {
-        if(dataSpedizioni){
+    useEffect(() => {
+        const fetchData = async () => {
+          if(dataSpedizioni){
             let dati = await getTrackingSpedizione(dataSpedizioni.id_spedizione)
             setTracking(dati);
-        }
-    }, [dataSpedizioni])
-
-    useEffect(() => {
+          }
+        };    
         fetchData();
-    }, [dataSpedizioni])
-    
+      }, [dataSpedizioni]);
+
     return (
         <Dialog
             isOpen={modalViewSpedizioni}
@@ -58,8 +58,8 @@ const ModalViewSpedizioni = () => {
                         <div className="font-semibold">{dataSpedizioni.cap} - {dataSpedizioni.citta} ({dataSpedizioni.codice_nazione})</div>
                     </div>
                     <div className="col-span-2 mb-2">
-
-                        <table className="border-collapse border border-gray-300">
+  
+                        <table className="border-collapse border border-gray-300 w-full">
                             <thead>
                                 <tr className=' text-xs text-black font-semibold uppercase'>
                                     <th className="border border-gray-200 p-1">Data</th>
@@ -69,8 +69,7 @@ const ModalViewSpedizioni = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {
-                                    tracking.map( track => {
+                                {tracking.map( track => {
                                         let dataTrack = track.data_tracking_format.split('-')                               
                                         return (
                                             <tr className='text-xs text-gray-800'>

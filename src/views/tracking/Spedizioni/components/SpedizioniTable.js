@@ -1,7 +1,7 @@
 import React, { useEffect, useCallback, useMemo, useRef } from 'react'
 import { Tooltip } from 'components/ui'
 import { DataTable } from 'components/shared'
-import { HiOutlineEye, HiOutlineTrash, HiOutlinePencil } from 'react-icons/hi'
+import { HiOutlineTrash, HiOutlinePencil } from 'react-icons/hi'
 import { useDispatch, useSelector } from 'react-redux'
 import { getSpedizioni, setTableData } from '../store/dataSlice'
 import {
@@ -25,7 +25,6 @@ const SpedizioniColumn = ({ row }) => {
   const onView = () => {
     dispatch(toggleModalViewSpedizioni(true))
     dispatch(setDataSpedizioni(row))
-
   }
   return (
       <span
@@ -38,24 +37,14 @@ const SpedizioniColumn = ({ row }) => {
 }
 
 const SpedizioniData = ({ row }) => {
-    const dispatch = useDispatch()
-    const { textTheme } = useThemeClass()
-  
-    const onView = () => {
-      dispatch(toggleModalViewSpedizioni(true))
-      //dispatch(setDataSpedizioni(row))
-    } 
-  
     return (
         <span>{dayjs(row.data_spedizione).format('DD/MM/YYYY')}</span>
-
     )
 }
 
 const ActionColumn = ({ row }) => {
 
   const dispatch = useDispatch()
-  const { textTheme } = useThemeClass()
 
   const onUpdate = () => {
     dispatch(toggleModalUpdateSpedizioni(true))
@@ -66,27 +55,10 @@ const ActionColumn = ({ row }) => {
       dispatch(setDeleteMode('single'))
       dispatch(setSelectedRow(row.id_spedizione))
   }
-
-  const onView = () => {
-    console.log("CIAO")
-    dispatch(toggleModalViewSpedizioni(true))
-   // dispatch(setDataSpedizioni(row))
-  } 
-//   const onView = useCallback(() => {
-//       navigate(`/app/sistema/Spedizioni-details/${row.id_Spedizioni}`)
-//   }, [navigate, row])
-
-  
+ 
   return (
       <div className="flex justify-end text-lg">
-          <Tooltip title="Dettagli Spedizioni">
-              <span
-                  className={`cursor-pointer p-2 hover:${textTheme}`}
-                  onClick={onView}
-              >
-                  <HiOutlineEye />
-              </span>
-          </Tooltip>
+
           <Tooltip title="Modifica">
               <span
                   className="cursor-pointer p-2 hover:text-blue-500"

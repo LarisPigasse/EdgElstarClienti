@@ -45,12 +45,12 @@ const dataSlice = createSlice({
     name: 'trackingSpedizioni/data',
     initialState: {
         loading: false,
-        orderList: [],
+        spedizioni: [],
         tableData: initialTableData
     },
     reducers: {
-        setTrackingSpedizione: (state, action) => {
-            state.trackingSpedizione = action.payload
+        setTrackingSpedizioni: (state, action) => {
+            state.trackingSpedizioni = action.payload
         },
         setOrderList: (state, action) => {
             state.orderList = action.payload
