@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Dialog, Button } from 'components/ui'
-import { toggleModalViewSpedizioni, } from '../store/stateSlice'
+import { toggleModalViewSpedizioni, setDataSpedizioni } from '../store/stateSlice'
 import { getTrackingSpedizione } from '../store/dataSlice'
 import { useDispatch, useSelector } from 'react-redux'
 
@@ -17,21 +17,22 @@ const ModalViewSpedizioni = () => {
     const onDialogClose = () => {
         dispatch(toggleModalViewSpedizioni(false))
         setTracking([])
+        dispatch(setDataSpedizioni([]))
     }
 
     const dataSpedizioni = useSelector(
         (state) => state.trackingSpedizioni.state.dataSpedizioni
     )
+    const fetchData = async () => {
+        if(dataSpedizioni.id_spedizione){
+          let dati = await getTrackingSpedizione(dataSpedizioni.id_spedizione)
+          setTracking(dati);
+        }
+    }
 
     useEffect(() => {
-        const fetchData = async () => {
-          if(dataSpedizioni){
-            let dati = await getTrackingSpedizione(dataSpedizioni.id_spedizione)
-            setTracking(dati);
-          }
-        };    
         fetchData();
-      }, [dataSpedizioni]);
+    }, [dataSpedizioni]);
 
     return (
         <Dialog
@@ -69,10 +70,10 @@ const ModalViewSpedizioni = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {tracking.map( track => {
-                                        let dataTrack = track.data_tracking_format.split('-')                               
+                                {tracking.map( (track, index) => {
+                                        let dataTrack = track.data_tracking_format.split('-')      
                                         return (
-                                            <tr className='text-xs text-gray-800'>
+                                            <tr key={index} className='text-xs text-gray-800'>
                                                 <td className="border border-gray-200 p-2 font-semibold">
                                                     <div className='text-indigo-600'>{dataTrack[0]}</div>
                                                     <div>{dataTrack[1]}</div>

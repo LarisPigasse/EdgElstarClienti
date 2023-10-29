@@ -23,8 +23,8 @@ const SpedizioniColumn = ({ row }) => {
   const { textTheme } = useThemeClass()
 
   const onView = () => {
-    dispatch(toggleModalViewSpedizioni(true))
     dispatch(setDataSpedizioni(row))
+    dispatch(toggleModalViewSpedizioni(true))
   }
   return (
       <span
