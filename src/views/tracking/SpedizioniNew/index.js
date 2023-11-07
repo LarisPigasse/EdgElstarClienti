@@ -34,7 +34,7 @@ const SpedizioniNew = () => {
     }
 
     const handleDiscard = () => {
-        navigate('/app/tracking/spedizioni')
+        navigate('/tracking/spedizioni')
     }
 
     return (

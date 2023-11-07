@@ -7,6 +7,12 @@ export async function apiGetLogisticaCorrieri(params) {
         params,
     })
 }
+export async function apiGetCorrieri() {
+    return ApiService.fetchData({
+        url: '/corrieri/',
+        method: 'get',
+    })
+}
 
 export async function apiInsertCorrieri(data) {
     return ApiService.fetchData({

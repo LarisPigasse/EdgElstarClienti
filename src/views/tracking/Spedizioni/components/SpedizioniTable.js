@@ -3,6 +3,7 @@ import { Tooltip } from 'components/ui'
 import { DataTable } from 'components/shared'
 import { HiOutlineTrash, HiOutlinePencil } from 'react-icons/hi'
 import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import { getSpedizioni, setTableData } from '../store/dataSlice'
 import {
     setSelectedRows,
@@ -10,7 +11,6 @@ import {
     removeRowItem,
     setDeleteMode,
     setSelectedRow,
-    toggleModalUpdateSpedizioni,
     toggleModalViewSpedizioni,
     setDataSpedizioni
 } from '../store/stateSlice'
@@ -43,13 +43,12 @@ const SpedizioniData = ({ row }) => {
 }
 
 const ActionColumn = ({ row }) => {
-
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
-  const onUpdate = () => {
-    dispatch(toggleModalUpdateSpedizioni(true))
-    dispatch(setDataSpedizioni(row))
-  }
+  const onEdit = () => {
+    navigate(`/tracking/spedizioni-edit/${row.id_spedizione}`)
+}
 
   const onDelete = () => {
       dispatch(setDeleteMode('single'))
@@ -62,7 +61,7 @@ const ActionColumn = ({ row }) => {
           <Tooltip title="Modifica">
               <span
                   className="cursor-pointer p-2 hover:text-blue-500"
-                  onClick={onUpdate}
+                  onClick={onEdit}
               >
                   <HiOutlinePencil />
               </span>

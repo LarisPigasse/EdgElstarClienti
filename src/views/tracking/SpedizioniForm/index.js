@@ -1,8 +1,9 @@
 import React, { forwardRef } from 'react'
 import { FormContainer, Button, hooks } from 'components/ui'
-import { StickyFooter } from 'components/shared'
+import { AdaptableCard } from 'components/shared'
 import { Form, Formik } from 'formik'
 import BasicFields from './BasicFields'
+import ShippingFields from './ShippingFields'
 import cloneDeep from 'lodash/cloneDeep'
 import { AiOutlineSave } from 'react-icons/ai'
 import * as Yup from 'yup'
@@ -52,54 +53,53 @@ const SpedizioniForm = forwardRef((props, ref) => {
                 {({ values, touched, errors, isSubmitting }) => (
                     <Form>
                         <FormContainer>
-                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                                <div className="lg:col-span-1">
-                                    <BasicFields
-                                        touched={touched}
-                                        errors={errors}
-                                        values={values}
-                                    />
-                                    <BasicFields
-                                        touched={touched}
-                                        errors={errors}
-                                        values={values}
-                                    />                                    
-                                </div>
-                                <div className="lg:col-span-1">
-                                    <BasicFields
-                                        touched={touched}
-                                        errors={errors}
-                                        values={values}
-                                    />
-                                </div>                                
-                            </div>                           
-                            <StickyFooter
-                                className="-mx-8 px-8 flex items-center justify-between py-4"
-                                stickyClass="border-t bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700"
-                            >
-                                <div>
+                            <AdaptableCard className="mb-4 p-2" divider>
+                                <div className="grid grid-cols-2 gap-4">
+                                    <div className='mb-4 col-span-2'>
+                                        <h4>Inserisci una nuova spedizione</h4>
+                                    </div>
+                                    <div className="px-2 col-span-2 lg:col-span-1">
+                                        <BasicFields
+                                            touched={touched}
+                                            errors={errors}
+                                            values={values}
+                                        />                                  
+                                    </div>
+                                    <div className="px-2 col-span-2 lg:col-span-1">
+                                        <ShippingFields
+                                            touched={touched}
+                                            errors={errors}
+                                            values={values}
+                                        />
+                                    </div>
+                                </div>                           
+                                <div
+                                    className="-mx-8 px-8 flex items-center justify-between py-4"
+                                >
+                                    <div>
 
+                                    </div>
+                                    <div className="md:flex items-center">
+                                        <Button
+                                            size="sm"
+                                            className="ltr:mr-3 rtl:ml-3"
+                                            onClick={() => onDiscard?.()}
+                                            type="button"
+                                        >
+                                            Annulla
+                                        </Button>
+                                        <Button
+                                            size="sm"
+                                            variant="solid"
+                                            loading={isSubmitting}
+                                            icon={<AiOutlineSave />}
+                                            type="submit"
+                                        >
+                                            Salva
+                                        </Button>
+                                    </div>
                                 </div>
-                                <div className="md:flex items-center">
-                                    <Button
-                                        size="sm"
-                                        className="ltr:mr-3 rtl:ml-3"
-                                        onClick={() => onDiscard?.()}
-                                        type="button"
-                                    >
-                                        Annulla
-                                    </Button>
-                                    <Button
-                                        size="sm"
-                                        variant="solid"
-                                        loading={isSubmitting}
-                                        icon={<AiOutlineSave />}
-                                        type="submit"
-                                    >
-                                        Salva
-                                    </Button>
-                                </div>
-                            </StickyFooter>
+                            </AdaptableCard>
                         </FormContainer>
                     </Form>
                 )}

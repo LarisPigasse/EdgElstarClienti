@@ -8,6 +8,13 @@ export async function apiGetSistemaClienti(params) {
     })
 }
 
+export async function apiGetClienti() {
+    return ApiService.fetchData({
+        url: '/clienti/',
+        method: 'get',
+    })
+}
+
 export async function apiInsertClienti(data) {
     return ApiService.fetchData({
         url: '/clienti',

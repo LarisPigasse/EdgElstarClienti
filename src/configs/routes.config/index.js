@@ -1,6 +1,6 @@
 import React from 'react'
 import authRoute from './authRoute'
-import { ADMIN, ROOT, CLIENTE, OPERATORE } from '../../constants/roles.constant'
+import { ADMIN, OPERATORE } from '../../constants/roles.constant'
 
 export const publicRoutes = [...authRoute]
 
@@ -34,7 +34,13 @@ export const protectedRoutes = [
         path: '/tracking/spedizioni-new',
         component: React.lazy(() => import('views/tracking/SpedizioniNew')),
         authority: [ADMIN,OPERATORE],
-    },    
+    },
+    {
+        key: 'tracking.spedizioni.edit',
+        path: '/tracking/spedizioni-edit/:spedizioneId',
+        component: React.lazy(() => import('views/tracking/SpedizioniEdit')),
+        authority: [ADMIN,OPERATORE],
+    },          
     {
         key: 'crm.dashboard',
         path: '/crm/dashboard/',

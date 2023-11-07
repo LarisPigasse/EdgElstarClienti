@@ -6,7 +6,7 @@ import { PAGE_CONTAINER_GUTTER_X } from 'constants/theme.constant'
 
 const FooterContent = () => {
     return (
-        <div className="flex items-center justify-between flex-auto w-full text-xs">
+        <div className="flex items-center px-3 justify-between flex-auto w-full text-xs">
             <span>
                 Copyright &copy; {`${new Date().getFullYear()}`}{' '}
                 <span className="font-semibold text-sky-600">{`${APP_NAME}`}</span> All
@@ -26,7 +26,7 @@ export default function Footer({ pageContainerType }) {
     return (
         <footer
             className={classNames(
-                `footer flex flex-auto items-center h-8 ${PAGE_CONTAINER_GUTTER_X}`
+                `footer flex flex-auto items-center h-8 ${PAGE_CONTAINER_GUTTER_X} bg-gray-50`
             )}
         >
             {pageContainerType === 'contained' ? (

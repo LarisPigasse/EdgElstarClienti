@@ -1,41 +1,41 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import {
-    apiGetSalesProduct,
-    apiPutSalesProduct,
-    apiDeleteSalesProducts,
-} from 'services/SalesService'
+import { apiGetSpedizione, apiUpdateSpedizioni} from 'services/SpedizioniService'
+import {apiGetCorrieri} from 'services/CorrieriService'
 
-export const getProduct = createAsyncThunk(
-    'salesProductEdit/data/getProducts',
+export const getSpedizione = createAsyncThunk(
+    'trackingSpedizioneEdit/data/getSpedizioni',
     async (data) => {
-        const response = await apiGetSalesProduct(data)
+        const response = await apiGetSpedizione(data.id)
         return response.data
     }
 )
 
-export const updateProduct = async (data) => {
-    const response = await apiPutSalesProduct(data)
+export const updateSpedizione = async (data) => {
+    const response = await apiUpdateSpedizioni(data.id)
     return response.data
 }
 
-export const deleteProduct = async (data) => {
-    const response = await apiDeleteSalesProducts(data)
-    return response.data
-}
+export const getCorrieri = createAsyncThunk(
+    'trackingSpedizioneEdit/data/getCorrieri',
+    async () => {
+        const response = await apiGetCorrieri()
+        return response
+    }
+)
 
 const dataSlice = createSlice({
-    name: 'salesProductEdit/data',
+    name: 'trackingSpedizioneEdit/data',
     initialState: {
         loading: false,
-        productData: [],
+        spedizioneData: [],
     },
     reducers: {},
     extraReducers: {
-        [getProduct.fulfilled]: (state, action) => {
-            state.productData = action.payload
+        [getSpedizione.fulfilled]: (state, action) => {
+            state.spedizioneData = action.payload
             state.loading = false
         },
-        [getProduct.pending]: (state) => {
+        [getSpedizione.pending]: (state) => {
             state.loading = true
         },
     },
