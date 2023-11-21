@@ -41,6 +41,7 @@ const SpedizioniNew = () => {
         <>
             <SpedizioniForm
                 type="new"
+                initialData={[]}
                 onFormSubmit={handleFormSubmit}
                 onDiscard={handleDiscard}
             />

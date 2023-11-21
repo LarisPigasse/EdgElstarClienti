@@ -125,8 +125,8 @@ ConfirmDialog.propTypes = {
 
 ConfirmDialog.defaultProps = {
     type: 'info',
-    cancelText: 'Cancel',
-    confirmText: 'Confirm',
+    cancelText: 'Annulla',
+    confirmText: 'Conferma',
 }
 
 export default ConfirmDialog

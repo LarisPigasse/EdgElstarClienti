@@ -24,7 +24,7 @@ const SpedizioniEdit = () => {
 
     const fetchData = (data) => {
         dispatch(getSpedizione(data))
-        dispatch(getCorrieri(data))
+        //dispatch(getCorrieri(data))
     }
 
     const handleFormSubmit = async (values, setSubmitting) => {

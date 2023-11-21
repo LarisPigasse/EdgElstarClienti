@@ -1,23 +1,29 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Input, FormItem, Select } from 'components/ui'
-import {RichTextEditor } from 'components/shared'
+import { RichTextEditor } from 'components/shared'
 import { Field } from 'formik'
-
-export const corrieri = [
-    { label: 'Pallex', value: 1 },
-    { label: 'TNT', value: 2 },
-    { label: 'FeDex', value: 3 },
-    { label: 'SDA', value: 4 },
-    { label: 'Noerpel', value: 5 },
-    { label: 'Kuehne e Nagel', value: 6 },
-    { label: 'XPO Logistics', value: 7 },
-    { label: 'GLS', value: 8 },
-    { label: 'Ciblex', value: 9 },
-    { label: 'Dachser', value: 10 },    
-]
+import {  useSelector,useDispatch } from 'react-redux'
+import {  getCorrieri } from './store/dataSlice'
 
 const BasicFields = (props) => {
     const { values, touched, errors } = props
+   
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(getCorrieri())
+    }, [])
+
+    const corrieriData = useSelector(
+        (state) => state.trackingSpedizioneForm.data.corrieriData
+    )
+
+    const corrieri = corrieriData.map((corriere) => {
+        return {
+            label: corriere.corriere,
+            value: corriere.id_corriere,
+        }
+    })
 
     return (
         <>

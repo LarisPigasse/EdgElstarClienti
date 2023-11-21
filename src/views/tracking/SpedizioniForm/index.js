@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react'
+import React, { forwardRef, useEffect } from 'react'
 import { FormContainer, Button, hooks } from 'components/ui'
 import { AdaptableCard } from 'components/shared'
 import { Form, Formik } from 'formik'
@@ -7,6 +7,10 @@ import ShippingFields from './ShippingFields'
 import cloneDeep from 'lodash/cloneDeep'
 import { AiOutlineSave } from 'react-icons/ai'
 import * as Yup from 'yup'
+import reducer from './store'
+import { injectReducer } from 'store/index'
+
+injectReducer('trackingSpedizioneForm', reducer)
 
 const { useUniqueId } = hooks
 

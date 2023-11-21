@@ -19,7 +19,7 @@ export const getCorrieri = createAsyncThunk(
     'trackingSpedizioneEdit/data/getCorrieri',
     async () => {
         const response = await apiGetCorrieri()
-        return response
+        return response.data
     }
 )
 
@@ -28,6 +28,7 @@ const dataSlice = createSlice({
     initialState: {
         loading: false,
         spedizioneData: [],
+        corrieriData: [],
     },
     reducers: {},
     extraReducers: {
@@ -38,6 +39,10 @@ const dataSlice = createSlice({
         [getSpedizione.pending]: (state) => {
             state.loading = true
         },
+        [getCorrieri.fulfilled]: (state, action) => {
+            state.corrieriData = action.payload
+            state.loading = false
+        },        
     },
 })
 

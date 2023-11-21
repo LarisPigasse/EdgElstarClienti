@@ -131,7 +131,11 @@ const SpedizioniTable = () => {
           {
             header: 'Corriere',
             accessorKey: 'corriere',
-          },                    
+          },
+          {
+            header: 'Codice',
+            accessorKey: 'altro_numero',
+          },                               
           {
             header: 'Destinazione',
             accessorKey: 'destinazione',
