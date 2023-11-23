@@ -39,6 +39,7 @@ const ModalViewSpedizioni = () => {
     }, [dataSpedizioni]);
 
     const [open, setOpen] = useState(false)
+    
     const handleClose = () => {
         setOpen(false)
     }
@@ -53,9 +54,14 @@ const ModalViewSpedizioni = () => {
     }
 
     const onDrawerClose = (e) => {
-        console.log('onDrawerClose', e)
         setIsOpen(false)
-    }    
+    } 
+    
+    const [selectedTracking, setSelectedTracking] = useState(null);
+    function handleClick(id) {
+        setOpen(true);
+        setSelectedTracking(id);
+      }
 
     return (
   
@@ -86,8 +92,9 @@ const ModalViewSpedizioni = () => {
                 onCancel={handleClose}
                 onConfirm={handleConfirm}
                 confirmButtonColor={'red-600'}
+                id_tracking = {selectedTracking}
             >
-                <p>Confermi la cancellazione del dettaglio selezionato?</p>
+                <p>Confermi la cancellazione del dettaglio {selectedTracking} selezionato?</p>
             </ConfirmDialog>
 
             <h4>Dettagli Spedizione {dataSpedizioni.id_spedizione}</h4>            
@@ -141,7 +148,7 @@ const ModalViewSpedizioni = () => {
                                                 <td className="border border-gray-200 p-2">{track.info}</td>
                                                 <td className="p-2">
                                                     <Tooltip title="Elimina dettaglio">
-                                                        <HiOutlineTrash onClick={() => setOpen(true)} className="text-gray-400 hover:text-red-600 text-lg" />
+                                                        <HiOutlineTrash onClick={() =>  handleClick(track.id_tracking)}  className="text-gray-400 hover:text-red-600 text-lg" />
                                                     </Tooltip>    
                                                 </td>
                                             </tr>

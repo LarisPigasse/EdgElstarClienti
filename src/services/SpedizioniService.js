@@ -70,3 +70,17 @@ export async function apiGetTrackingSpedizioniDetails(params) {
     })
 }
 
+export async function apiDeleteSpedizioniTracking(id) {
+    return ApiService.fetchData({
+        url: `/spedizioni/tracking/${id}`,
+        method: 'delete'
+    })
+}
+
+export async function apiInsertSpedizioniTracking(data) {
+    return ApiService.fetchData({
+        url: '/spedizioni/tracking',
+        method: 'post',
+        data,
+    })
+}

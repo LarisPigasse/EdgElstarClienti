@@ -12,9 +12,8 @@ const stateSlice = createSlice({
         modalViewSpedizioni: false,
         statiSpedizioni: [{value:'IN CONSEGNA',label:'IN CONSEGNA'},{value:'CONSEGNATA',label:'CONSEGNATA'}],
         archiviateSpedizioni: [{value:'SI',label:'SI'},{value:'NO',label:'NO'}]
-
     },
-    reducers: {
+    reducers: {     
         setSelectedRows: (state, action) => {
             state.selectedRows = action.payload
         },
