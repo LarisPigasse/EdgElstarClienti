@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { Input, FormItem, Select } from 'components/ui'
 import { RichTextEditor } from 'components/shared'
 import { Field } from 'formik'
-import {  useSelector,useDispatch } from 'react-redux'
-import {  getCorrieri } from './store/dataSlice'
+import { useSelector,useDispatch } from 'react-redux'
+import { getCorrieri, getClienti } from './store/dataSlice'
 
 const BasicFields = (props) => {
     const { values, touched, errors } = props
@@ -12,6 +12,7 @@ const BasicFields = (props) => {
 
     useEffect(() => {
         dispatch(getCorrieri())
+        dispatch(getClienti())
     }, [])
 
     const corrieriData = useSelector(
@@ -24,6 +25,17 @@ const BasicFields = (props) => {
             value: corriere.id_corriere,
         }
     })
+    
+    const clientiData = useSelector(
+        (state) => state.trackingSpedizioneForm.data.clientiData
+    )
+
+    const clienti = clientiData.map((cliente) => {
+        return {
+            label: cliente.cliente,
+            value: cliente.id_cliente,
+        }
+    })    
 
     return (
         <>
@@ -40,19 +52,32 @@ const BasicFields = (props) => {
                     component={Input}
                 />
             </FormItem>
+            
             <FormItem
-                label="Cliente"
-                invalid={errors.id_cliente && touched.id_cliente}
-                errorMessage={errors.id_cliente}
-            >
-                <Field
-                    type="text"
-                    autoComplete="off"
-                    name="cliente"
-                    placeholder=""
-                    component={Input}
-                />
-            </FormItem>
+                    label="Cliente"
+                    invalid={errors.cliente && touched.cliente}
+                    errorMessage={errors.cliente}
+                >
+                    <Field name="id_cliente">
+                        {({ field, form }) => (
+                            <Select
+                                field={field}
+                                form={form}
+                                options={clienti}
+                                value={clienti.filter(
+                                    (id_cliente) =>
+                                        id_cliente.value === values.id_cliente
+                                )}
+                                onChange={(option) =>
+                                    form.setFieldValue(
+                                        field.name,
+                                        option.value
+                                    )
+                                }
+                            />
+                        )}
+                    </Field>
+            </FormItem>      
 
             <FormItem
                     label="Corriere"

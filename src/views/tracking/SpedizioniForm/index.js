@@ -1,4 +1,4 @@
-import React, { forwardRef, useEffect } from 'react'
+import React, { forwardRef } from 'react'
 import { FormContainer, Button, hooks } from 'components/ui'
 import { AdaptableCard } from 'components/shared'
 import { Form, Formik } from 'formik'

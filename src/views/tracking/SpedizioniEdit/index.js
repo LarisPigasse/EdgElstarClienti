@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import reducer from './store'
 import { injectReducer } from 'store/index'
 import { useLocation, useNavigate } from 'react-router-dom'
-import { getSpedizione, updateSpedizione, getCorrieri} from './store/dataSlice'
+import { getSpedizione, updateSpedizione} from './store/dataSlice'
 import SpedizioniForm from 'views/tracking/SpedizioniForm'
 import isEmpty from 'lodash/isEmpty'
 
@@ -24,7 +24,6 @@ const SpedizioniEdit = () => {
 
     const fetchData = (data) => {
         dispatch(getSpedizione(data))
-        //dispatch(getCorrieri(data))
     }
 
     const handleFormSubmit = async (values, setSubmitting) => {

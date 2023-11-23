@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { apiGetSpedizione, apiUpdateSpedizioni} from 'services/SpedizioniService'
-import {apiGetCorrieri} from 'services/CorrieriService'
+
 
 export const getSpedizione = createAsyncThunk(
     'trackingSpedizioneEdit/data/getSpedizioni',
@@ -15,20 +15,11 @@ export const updateSpedizione = async (data) => {
     return response.data
 }
 
-export const getCorrieri = createAsyncThunk(
-    'trackingSpedizioneEdit/data/getCorrieri',
-    async () => {
-        const response = await apiGetCorrieri()
-        return response.data
-    }
-)
-
 const dataSlice = createSlice({
     name: 'trackingSpedizioneEdit/data',
     initialState: {
         loading: false,
         spedizioneData: [],
-        corrieriData: [],
     },
     reducers: {},
     extraReducers: {
@@ -38,11 +29,7 @@ const dataSlice = createSlice({
         },
         [getSpedizione.pending]: (state) => {
             state.loading = true
-        },
-        [getCorrieri.fulfilled]: (state, action) => {
-            state.corrieriData = action.payload
-            state.loading = false
-        },        
+        },       
     },
 })
 
