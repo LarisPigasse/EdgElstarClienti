@@ -4,7 +4,7 @@ import { DataTable } from 'components/shared'
 import { HiOutlineTrash, HiOutlinePencil } from 'react-icons/hi'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { getSpedizioni, setTableData } from '../store/dataSlice'
+import { getSpedizioni, setTableData, setIdDelete } from '../store/dataSlice'
 import {
     setSelectedRows,
     addRowItem,
@@ -52,7 +52,7 @@ const ActionColumn = ({ row }) => {
 
   const onDelete = () => {
       dispatch(setDeleteMode('single'))
-      dispatch(setSelectedRow(row.id_spedizione))
+      dispatch(setIdDelete({id_spedizione: row.id_spedizione, id_cliente: row.id_cliente}))
   }
  
   return (

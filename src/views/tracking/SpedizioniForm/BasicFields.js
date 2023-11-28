@@ -41,13 +41,13 @@ const BasicFields = (props) => {
         <>
             <FormItem
                 label="Codice spedizione"
-                invalid={errors.id_spedizione && touched.id_spedizione}
-                errorMessage={errors.id_spedizione}
+                invalid={errors.altro_numero && touched.altro_numero}
+                errorMessage={errors.altro_numero}
             >
                 <Field
                     type="text"
                     autoComplete="off"
-                    name="id_spedizione"
+                    name="altro_numero"
                     placeholder=""
                     component={Input}
                 />

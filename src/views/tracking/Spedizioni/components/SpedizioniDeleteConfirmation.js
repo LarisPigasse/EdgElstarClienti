@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import {
     setDeleteMode,
     setSelectedRow,
-    setSelectedRows,
+    
 } from '../store/stateSlice'
 import { deleteSpedizioni, getSpedizioni } from '../store/dataSlice'
 
@@ -24,6 +24,10 @@ const SpedizioniDeleteConfirmation = () => {
         (state) => state.trackingSpedizioni.data.tableData
     )
 
+    const idDelete = useSelector(
+        (state) => state.trackingSpedizioni.data.idDelete
+    )
+
     const onDialogClose = () => {
         dispatch(setDeleteMode(''))
 
@@ -36,15 +40,9 @@ const SpedizioniDeleteConfirmation = () => {
         dispatch(setDeleteMode(''))
 
         if (deleteMode === 'single') {
-            const success = await deleteSpedizioni(selectedRow)
+            const success = await deleteSpedizioni(idDelete)
             deleteSucceed(success)
-            dispatch(setSelectedRow([]))
-        }
-
-        if (deleteMode === 'batch') {
-            const success = await deleteSpedizioni({ id: selectedRows })
-            deleteSucceed(success, selectedRows.length)
-            dispatch(setSelectedRows([]))
+           // dispatch(setSelectedRow([]))
         }
     }
 

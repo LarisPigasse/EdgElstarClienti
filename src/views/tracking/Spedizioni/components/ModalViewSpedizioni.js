@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { Dialog, Button, Tooltip, Drawer } from 'components/ui'
-import { toggleModalViewSpedizioni, setDataSpedizioni } from '../store/stateSlice'
-import { getTrackingSpedizione } from '../store/dataSlice'
+import { Dialog, Button, Tooltip, Drawer, toast, Notification } from 'components/ui'
+import { toggleModalViewSpedizioni, setDataSpedizioni, toggleDrawerInsertTracking } from '../store/stateSlice'
+import { getTrackingSpedizione,getTracking, deleteTracking } from '../store/dataSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import {HiOutlinePlus, HiOutlineTrash } from 'react-icons/hi'
 import { ConfirmDialog } from 'components/shared'
@@ -9,7 +9,7 @@ import TrackingForm from './TrackingForm'
 
 const ModalViewSpedizioni = () => {  
 
-    const [tracking, setTracking] = useState([]);
+    //const [tracking, setTracking] = useState([]);
 
     const dispatch = useDispatch()
 
@@ -17,9 +17,14 @@ const ModalViewSpedizioni = () => {
         (state) => state.trackingSpedizioni.state.modalViewSpedizioni
     )
 
+    const drawerInsertTracking = useSelector(
+        (state) => state.trackingSpedizioni.state.drawerInsertTracking
+    )
+
     const onDialogClose = () => {
         dispatch(toggleModalViewSpedizioni(false))
-        setTracking([])
+        //setTracking([])
+        dispatch(getTracking(0))
         dispatch(setDataSpedizioni([]))
     }
 
@@ -27,10 +32,16 @@ const ModalViewSpedizioni = () => {
         (state) => state.trackingSpedizioni.state.dataSpedizioni
     )
 
+    const tracking = useSelector(
+        (state) => state.trackingSpedizioni.data.dataTracking
+    )
+
     const fetchData = async () => {
         if(dataSpedizioni.id_spedizione){
-          let dati = await getTrackingSpedizione(dataSpedizioni.id_spedizione)
-          setTracking(dati);
+        //   let dati = await getTrackingSpedizione(dataSpedizioni.id_spedizione)
+        //   setTracking(dati);
+
+          dispatch(getTracking(dataSpedizioni.id_spedizione))
         }
     }
 
@@ -43,25 +54,49 @@ const ModalViewSpedizioni = () => {
     const handleClose = () => {
         setOpen(false)
     }
-    const handleConfirm = () => {
+    const handleConfirm = async () => {
+        
+        let ok = await deleteTracking({
+            id_spedizione:dataSpedizioni.id_spedizione, 
+            id_tracking:selectedTracking,
+        })
+
+        if(ok){
+            fetchData();
+            toast.push(
+                <Notification
+                    title="Tracking registrato con successo."
+                    type="success"
+                    duration={3500}
+                >
+                    qualcosa...
+                </Notification>,
+                {
+                    placement: 'top-center',
+                }
+            )
+        }
+
+
         setOpen(false)
     }
-
-    const [isOpen, setIsOpen] = useState(false)
-
-    const openDrawer = () => {
-        setIsOpen(true)
-    }
-
-    const onDrawerClose = (e) => {
-        setIsOpen(false)
-    } 
     
     const [selectedTracking, setSelectedTracking] = useState(null);
-    function handleClick(id) {
+    
+    function handleClick(id_tracking) {
         setOpen(true);
-        setSelectedTracking(id);
-      }
+        setSelectedTracking(id_tracking);
+    }
+
+    const onDialogCloseDrawer = () => {
+        dispatch(toggleDrawerInsertTracking(false))
+       
+        // dispatch(setDataSpedizioni([]))
+    }
+
+    const handleAddTracking = () => {
+        dispatch(toggleDrawerInsertTracking(true))
+    }
 
     return (
   
@@ -76,9 +111,9 @@ const ModalViewSpedizioni = () => {
 
             <Drawer
                 title="Inserisci dettaglio del tracking"
-                isOpen={isOpen}
-                onClose={onDrawerClose}
-                onRequestClose={onDrawerClose}
+                isOpen={drawerInsertTracking}
+                onClose={onDialogCloseDrawer}
+                onRequestClose={onDialogCloseDrawer}
             >
                 <TrackingForm/>
             </Drawer>
@@ -129,7 +164,7 @@ const ModalViewSpedizioni = () => {
                                     <th className="border border-gray-200 p-1">Info</th>
                                     <th className="px-2 py-4">
                                         <Tooltip title="Aggiungi dettaglio">
-                                            <HiOutlinePlus onClick={() => openDrawer()} className="text-sky-600 hover:text-red-600 text-lg"/>
+                                            <HiOutlinePlus onClick={handleAddTracking} className="text-sky-600 hover:text-red-600 text-lg"/>
                                         </Tooltip>    
                                     </th>
                                 </tr>

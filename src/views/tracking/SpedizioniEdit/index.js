@@ -28,6 +28,12 @@ const SpedizioniEdit = () => {
 
     const handleFormSubmit = async (values, setSubmitting) => {
         setSubmitting(true)
+
+        values = {
+            ...values,
+            id_spedizione: spedizioneData.id_spedizione
+        }
+
         const success = await updateSpedizione(values)
         setSubmitting(false)
         if (success) {
@@ -54,7 +60,7 @@ const SpedizioniEdit = () => {
         )
         navigate('/tracking/spedizioni')
     }
-
+ 
     useEffect(() => {
         const path = location.pathname.substring(
             location.pathname.lastIndexOf('/') + 1

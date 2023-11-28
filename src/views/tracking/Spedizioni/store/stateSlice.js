@@ -10,6 +10,7 @@ const stateSlice = createSlice({
         modalNewSpedizioni: false,
         modalUpdateSpedizioni: false,
         modalViewSpedizioni: false,
+        drawerInsertTracking: false,
         statiSpedizioni: [{value:'IN CONSEGNA',label:'IN CONSEGNA'},{value:'CONSEGNATA',label:'CONSEGNATA'}],
         archiviateSpedizioni: [{value:'SI',label:'SI'},{value:'NO',label:'NO'}]
     },
@@ -49,7 +50,10 @@ const stateSlice = createSlice({
         },
         toggleModalViewSpedizioni: (state, action) => {
             state.modalViewSpedizioni = action.payload
-        },        
+        },
+        toggleDrawerInsertTracking: (state, action) => {
+            state.drawerInsertTracking = action.payload
+        },
         setDataSpedizioni: (state, action) => {
             state.dataSpedizioni = action.payload
         },
@@ -66,6 +70,7 @@ export const {
     toggleModalNewSpedizioni,
     toggleModalUpdateSpedizioni,
     toggleModalViewSpedizioni,
+    toggleDrawerInsertTracking,
     setDataSpedizioni,
 } = stateSlice.actions
 

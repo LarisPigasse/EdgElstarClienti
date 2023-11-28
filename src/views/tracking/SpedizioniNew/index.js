@@ -29,19 +29,30 @@ const SpedizioniNew = () => {
                     placement: 'top-center',
                 }
             )
-            navigate('/app/tracking/spedizioni')
+            navigate('/tracking/spedizioni')
         }
     }
 
     const handleDiscard = () => {
         navigate('/tracking/spedizioni')
     }
+    const initialSpedizione = {
+        altro_numero:'',
+        id_cliente:'',
+        destinatario:'',
+        destinazione:'',
+        id_corriere:'',
+        indirizzo:'',
+        cap:'',
+        citta:'',
+        note:'',
+    }
 
     return (
         <>
             <SpedizioniForm
                 type="new"
-                initialData={[]}
+                initialData={initialSpedizione}
                 onFormSubmit={handleFormSubmit}
                 onDiscard={handleDiscard}
             />

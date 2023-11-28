@@ -47,17 +47,17 @@ export async function apiInsertSpedizioni(data) {
     })
 }
 
-export async function apiUpdateSpedizioni(data, params) {
+export async function apiUpdateSpedizioni(data) {
     return ApiService.fetchData({
-        url: `/spedizioni/${params}`,
+        url: `/spedizioni`,
         data,
         method: 'put'
     })
 }
 
-export async function apiDeleteSpedizioni(id) {
+export async function apiDeleteSpedizioni(idDelete) {
     return ApiService.fetchData({
-        url: `/spedizioni/${id}`,
+        url: `/spedizioni/${idDelete.id_spedizione}/${idDelete.id_cliente}`,
         method: 'delete'
     })
 }
@@ -70,10 +70,10 @@ export async function apiGetTrackingSpedizioniDetails(params) {
     })
 }
 
-export async function apiDeleteSpedizioniTracking(id) {
+export async function apiDeleteSpedizioniTracking(params) {
     return ApiService.fetchData({
-        url: `/spedizioni/tracking/${id}`,
-        method: 'delete'
+        url: `/spedizioni/tracking/${params.id_tracking}/${params.id_spedizione}`,
+        method: 'delete',
     })
 }
 

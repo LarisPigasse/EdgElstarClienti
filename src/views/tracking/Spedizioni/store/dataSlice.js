@@ -1,5 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import { apiGetSpedizioni, apiDeleteSpedizioni, apiInsertSpedizioni, apiUpdateSpedizioni, apiGetTrackingSpedizione } from 'services/SpedizioniService'
+import { apiGetSpedizioni, apiDeleteSpedizioni, apiInsertSpedizioni, 
+            apiUpdateSpedizioni, apiGetTrackingSpedizione,apiInsertSpedizioniTracking,
+            apiDeleteSpedizioniTracking } from 'services/SpedizioniService'
 
 export const getSpedizioni = createAsyncThunk(
     'trackingSpedizioni/data/getSpedizioni',
@@ -8,6 +10,18 @@ export const getSpedizioni = createAsyncThunk(
         return response.data
     }
 )
+
+export const getTracking = createAsyncThunk(
+    'trackingSpedizioni/data/getTracking',
+    async (data) => {
+        if(data === 0){
+            return [];
+        }
+        const response = await apiGetTrackingSpedizione(data)
+        return response.data
+    }
+)
+
 
 export const insertSpedizioni = async ( data ) => {
     const response = await apiInsertSpedizioni(data)
@@ -24,8 +38,18 @@ export const deleteSpedizioni = async (data) => {
     return response.data
 }
 
-export const getTrackingSpedizione = async (data) => {
-    const response = await apiGetTrackingSpedizione(data)
+// export const getTrackingSpedizione = async (data) => {
+//     const response = await apiGetTrackingSpedizione(data)
+//     return await response.data
+// }
+
+export const insertTracking = async (data) => {
+    const response = await apiInsertSpedizioniTracking(data)
+    return await response.data
+}
+
+export const deleteTracking = async (data) => {
+    const response = await apiDeleteSpedizioniTracking(data)
     return await response.data
 }
 
@@ -46,6 +70,8 @@ const dataSlice = createSlice({
     initialState: {
         loading: false,
         spedizioni: [],
+        dataTracking: [],
+        idDelete: {},
         tableData: initialTableData
     },
     reducers: {
@@ -58,6 +84,9 @@ const dataSlice = createSlice({
         setTableData: (state, action) => {
             state.tableData = action.payload
         },
+        setIdDelete: (state, action) => {
+            state.idDelete = action.payload
+        }
     },
     extraReducers: {
         [getSpedizioni.fulfilled]: (state, action) => {
@@ -67,10 +96,13 @@ const dataSlice = createSlice({
         },
         [getSpedizioni.pending]: (state) => {
             state.loading = true
+        },
+        [getTracking.fulfilled]: (state, action) => {
+            state.dataTracking = action.payload;
         }
     },
 })
 
-export const { setSpedizioni, setTableData, setTrackingSpedizioni } = dataSlice.actions
+export const { setSpedizioni, setTableData, setTrackingSpedizioni,setIdDelete } = dataSlice.actions
 
 export default dataSlice.reducer

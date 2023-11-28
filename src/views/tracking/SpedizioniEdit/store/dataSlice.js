@@ -11,7 +11,7 @@ export const getSpedizione = createAsyncThunk(
 )
 
 export const updateSpedizione = async (data) => {
-    const response = await apiUpdateSpedizioni(data.id)
+    const response = await apiUpdateSpedizioni(data)
     return response.data
 }
 

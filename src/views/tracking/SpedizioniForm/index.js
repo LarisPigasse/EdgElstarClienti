@@ -15,7 +15,7 @@ injectReducer('trackingSpedizioneForm', reducer)
 const { useUniqueId } = hooks
 
 const validationSchema = Yup.object().shape({
-    id_spedizione: Yup.number().required('Inserire il codice spedizione'),
+    altro_numero: Yup.number().required('Inserire il codice spedizione'),
     id_cliente: Yup.number().required('Inserire il cliente'),
     destinatario: Yup.string().required('Inserire il destinatario'),
     destinazione: Yup.string().required('Inserire la destinazione'),
@@ -45,12 +45,12 @@ const SpedizioniForm = forwardRef((props, ref) => {
                 onSubmit={(values, { setSubmitting }) => {
                     const formData = cloneDeep(values)
                     formData.tags = formData.tags.map((tag) => tag.value)
-                    if (type === 'new') {
-                        formData.id = newId
-                        if (formData.imgList.length > 0) {
-                            formData.img = formData.imgList[0].img
-                        }
-                    }
+                    // if (type === 'new') {
+                    //     formData.id = newId
+                    //     if (formData.imgList.length > 0) {
+                    //         formData.img = formData.imgList[0].img
+                    //     }
+                    // }
                     onFormSubmit?.(formData, setSubmitting)
                 }}
             >
@@ -116,7 +116,7 @@ SpedizioniForm.defaultProps = {
     type: 'edit',
     initialData: {
         id_cliente: 0,
-        id_spedizione: 0,
+        altro_numero: 0,
         id_corriere: 0,
         destinatario: '',
         destinazione: '',
