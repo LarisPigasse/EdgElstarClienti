@@ -8,10 +8,10 @@ import { Field, Form, Formik } from 'formik'
 import * as Yup from 'yup'
 
 const validationSchema = Yup.object().shape({
-    password: Yup.string().required('Please enter your password'),
+    password: Yup.string().required('Inserisci la password'),
     confirmPassword: Yup.string().oneOf(
         [Yup.ref('password'), null],
-        'Your passwords do not match'
+        'Le tue password non corrispondono'
     ),
 })
 
@@ -49,7 +49,7 @@ const ResetPasswordForm = (props) => {
                 {resetComplete ? (
                     <>
                         <h3 className="mb-1">Reset eseguito</h3>
-                        <p>La tua password è stata modificata</p>
+                        <p>La password è stata modificata</p>
                     </>
                 ) : (
                     <>
@@ -67,8 +67,8 @@ const ResetPasswordForm = (props) => {
             )}
             <Formik
                 initialValues={{
-                    password: '123Qwe1',
-                    confirmPassword: '123Qwe1',
+                    password: '',
+                    confirmPassword: '',
                 }}
                 validationSchema={validationSchema}
                 onSubmit={(values, { setSubmitting }) => {
@@ -99,7 +99,7 @@ const ResetPasswordForm = (props) => {
                                         />
                                     </FormItem>
                                     <FormItem
-                                        label="Confirm Password"
+                                        label="Conferma Password"
                                         invalid={
                                             errors.confirmPassword &&
                                             touched.confirmPassword
@@ -109,7 +109,7 @@ const ResetPasswordForm = (props) => {
                                         <Field
                                             autoComplete="off"
                                             name="confirmPassword"
-                                            placeholder="Confirm Password"
+                                            placeholder="Conferma Password"
                                             component={PasswordInput}
                                         />
                                     </FormItem>
@@ -131,7 +131,7 @@ const ResetPasswordForm = (props) => {
                                     type="button"
                                     onClick={onContinue}
                                 >
-                                    Continue
+                                    Continua
                                 </Button>
                             )}
 

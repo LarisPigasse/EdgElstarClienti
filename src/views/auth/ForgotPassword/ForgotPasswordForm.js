@@ -43,7 +43,7 @@ const ForgotPasswordForm = (props) => {
                     </>
                 ) : (
                     <>
-                        <h3 className="mb-1">Password dimenticata</h3>
+                        <h3 className="mb-1">Password dimenticata?</h3>
                         <p>
                             Inserisci il tuo indirizzo email per ricevere un codice di verifica
                         </p>
@@ -57,7 +57,7 @@ const ForgotPasswordForm = (props) => {
             )}
             <Formik
                 initialValues={{
-                    email: 'admin@mail.com',
+                    email: '',
                 }}
                 validationSchema={validationSchema}
                 onSubmit={(values, { setSubmitting }) => {
@@ -91,7 +91,7 @@ const ForgotPasswordForm = (props) => {
                                 variant="solid"
                                 type="submit"
                             >
-                                {emailSent ? 'Resend Email' : 'Send Email'}
+                                {emailSent ? 'Email inviata' : 'Invio Email'}
                             </Button>
                             <div className="mt-4 text-center">
                                 <span>Torna al </span>

@@ -7,14 +7,14 @@ import * as Yup from 'yup'
 import useAuth from 'utils/hooks/useAuth'
 
 const validationSchema = Yup.object().shape({
-    userName: Yup.string().required('Please enter your user name'),
+    userName: Yup.string().required('Inserisci il tuo username'),
     email: Yup.string()
-        .email('Invalid email')
-        .required('Please enter your email'),
-    password: Yup.string().required('Please enter your password'),
+        .email('Email non valida')
+        .required('Inserisci la tua email'),
+    password: Yup.string().required('Inserisci la tua password'),
     confirmPassword: Yup.string().oneOf(
         [Yup.ref('password'), null],
-        'Your passwords do not match'
+        'Le tue password non corrispondono'
     ),
 })
 
@@ -46,10 +46,10 @@ const SignUpForm = (props) => {
             )}
             <Formik
                 initialValues={{
-                    userName: 'admin1',
-                    password: '123Qwe1',
-                    confirmPassword: '123Qwe1',
-                    email: 'test@testmail.com',
+                    userName: '',
+                    password: '',
+                    confirmPassword: '',
+                    email: '',
                 }}
                 validationSchema={validationSchema}
                 onSubmit={(values, { setSubmitting }) => {
@@ -64,7 +64,7 @@ const SignUpForm = (props) => {
                     <Form>
                         <FormContainer>
                             <FormItem
-                                label="User Name"
+                                label="Username"
                                 invalid={errors.userName && touched.userName}
                                 errorMessage={errors.userName}
                             >
@@ -72,7 +72,7 @@ const SignUpForm = (props) => {
                                     type="text"
                                     autoComplete="off"
                                     name="userName"
-                                    placeholder="User Name"
+                                    placeholder="Username"
                                     component={Input}
                                 />
                             </FormItem>
@@ -102,7 +102,7 @@ const SignUpForm = (props) => {
                                 />
                             </FormItem>
                             <FormItem
-                                label="Confirm Password"
+                                label="Conferma Password"
                                 invalid={
                                     errors.confirmPassword &&
                                     touched.confirmPassword
@@ -112,7 +112,7 @@ const SignUpForm = (props) => {
                                 <Field
                                     autoComplete="off"
                                     name="confirmPassword"
-                                    placeholder="Confirm Password"
+                                    placeholder="Conferma Password"
                                     component={PasswordInput}
                                 />
                             </FormItem>
@@ -123,12 +123,12 @@ const SignUpForm = (props) => {
                                 type="submit"
                             >
                                 {isSubmitting
-                                    ? 'Creating Account...'
-                                    : 'Sign Up'}
+                                    ? 'Creazione account in corso...'
+                                    : 'Registrati'}
                             </Button>
                             <div className="mt-4 text-center">
-                                <span>Already have an account? </span>
-                                <ActionLink to={signInUrl}>Sign in</ActionLink>
+                                <span>Hai già un account? </span>
+                                <ActionLink to={signInUrl}>Accedi</ActionLink>
                             </div>
                         </FormContainer>
                     </Form>
