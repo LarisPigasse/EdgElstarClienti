@@ -4,13 +4,12 @@ import { DataTable } from 'components/shared'
 import { HiOutlineTrash, HiOutlinePencil } from 'react-icons/hi'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { getSpedizioni, setTableData, setIdDelete } from '../store/dataSlice'
+import { getSpedizioniClienti, setTableData, setIdDelete } from '../store/dataSlice'
 import {
     setSelectedRows,
     addRowItem,
     removeRowItem,
     setDeleteMode,
-    setSelectedRow,
     toggleModalViewSpedizioni,
     setDataSpedizioni
 } from '../store/stateSlice'
@@ -93,7 +92,7 @@ const SpedizioniTable = () => {
   const data = useSelector((state) => state.trackingSpedizioni.data.orderList)
 
   const fetchData = useCallback(() => {
-      dispatch(getSpedizioni({ pageIndex, pageSize, sort, query }))
+      dispatch(getSpedizioniClienti({ pageIndex, pageSize, sort, query }))
   }, [dispatch, pageIndex, pageSize, sort, query])
 
   useEffect(() => {

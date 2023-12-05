@@ -1,12 +1,10 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import { apiGetSpedizioni, apiDeleteSpedizioni, apiInsertSpedizioni, 
-            apiUpdateSpedizioni, apiGetTrackingSpedizione,apiInsertSpedizioniTracking,
-            apiDeleteSpedizioniTracking } from 'services/SpedizioniService'
+import { apiGetSpedizioniClienti, apiGetTrackingSpedizione} from 'services/SpedizioniService'
 
-export const getSpedizioni = createAsyncThunk(
-    'trackingSpedizioni/data/getSpedizioni',
+export const getSpedizioniClienti = createAsyncThunk(
+    'trackingSpedizioni/data/getSpedizioniClienti',
     async (data) => {
-        const response = await apiGetSpedizioni(data)
+        const response = await apiGetSpedizioniClienti(data)
         return response.data
     }
 )
@@ -21,37 +19,6 @@ export const getTracking = createAsyncThunk(
         return response.data
     }
 )
-
-
-export const insertSpedizioni = async ( data ) => {
-    const response = await apiInsertSpedizioni(data)
-    return response.data
-}
-
-export const updateSpedizioni = async ( data, params ) => {
-    const response = await apiUpdateSpedizioni(data, params)
-    return response.data
-}
-
-export const deleteSpedizioni = async (data) => {
-    const response = await apiDeleteSpedizioni(data)
-    return response.data
-}
-
-// export const getTrackingSpedizione = async (data) => {
-//     const response = await apiGetTrackingSpedizione(data)
-//     return await response.data
-// }
-
-export const insertTracking = async (data) => {
-    const response = await apiInsertSpedizioniTracking(data)
-    return await response.data
-}
-
-export const deleteTracking = async (data) => {
-    const response = await apiDeleteSpedizioniTracking(data)
-    return await response.data
-}
 
 
 export const initialTableData = {
@@ -89,12 +56,12 @@ const dataSlice = createSlice({
         }
     },
     extraReducers: {
-        [getSpedizioni.fulfilled]: (state, action) => {
+        [getSpedizioniClienti.fulfilled]: (state, action) => {
             state.orderList = action.payload.data
             state.tableData.total = action.payload.total
             state.loading = false
         },
-        [getSpedizioni.pending]: (state) => {
+        [getSpedizioniClienti.pending]: (state) => {
             state.loading = true
         },
         [getTracking.fulfilled]: (state, action) => {
