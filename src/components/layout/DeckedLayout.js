@@ -19,7 +19,6 @@ const HeaderActionsStart = () => {
 const HeaderActionsEnd = () => {
     return (
         <>
-            <SidePanel />
             <UserDropdown hoverable={false} />
         </>
     )

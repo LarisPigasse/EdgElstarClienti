@@ -1,15 +1,11 @@
 import React, { useEffect, useCallback, useMemo, useRef } from 'react'
-import { Tooltip } from 'components/ui'
 import { DataTable } from 'components/shared'
-import { HiOutlineTrash, HiOutlinePencil } from 'react-icons/hi'
 import { useDispatch, useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
-import { getSpedizioniClienti, setTableData, setIdDelete } from '../store/dataSlice'
+import { getSpedizioni, setTableData } from '../store/dataSlice'
 import {
     setSelectedRows,
     addRowItem,
     removeRowItem,
-    setDeleteMode,
     toggleModalViewSpedizioni,
     setDataSpedizioni
 } from '../store/stateSlice'
@@ -41,43 +37,6 @@ const SpedizioniData = ({ row }) => {
     )
 }
 
-const ActionColumn = ({ row }) => {
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
-
-  const onEdit = () => {
-    navigate(`/tracking/spedizioni-edit/${row.id_spedizione}`)
-}
-
-  const onDelete = () => {
-      dispatch(setDeleteMode('single'))
-      dispatch(setIdDelete({id_spedizione: row.id_spedizione, id_cliente: row.id_cliente}))
-  }
- 
-  return (
-      <div className="flex justify-end text-lg">
-
-          <Tooltip title="Modifica">
-              <span
-                  className="cursor-pointer p-2 hover:text-blue-500"
-                  onClick={onEdit}
-              >
-                  <HiOutlinePencil />
-              </span>
-          </Tooltip>
-          <Tooltip title="Elimina">
-              <span
-                  className="cursor-pointer p-2 hover:text-red-500"
-                  onClick={onDelete}
-              >
-                  <HiOutlineTrash />
-              </span>
-          </Tooltip>
-      </div>
-  )
-}
-
-
 const SpedizioniTable = () => {
 
   const tableRef = useRef(null)
@@ -92,7 +51,7 @@ const SpedizioniTable = () => {
   const data = useSelector((state) => state.trackingSpedizioni.data.orderList)
 
   const fetchData = useCallback(() => {
-      dispatch(getSpedizioniClienti({ pageIndex, pageSize, sort, query }))
+      dispatch(getSpedizioni({ pageIndex, pageSize, sort, query }))
   }, [dispatch, pageIndex, pageSize, sort, query])
 
   useEffect(() => {
@@ -142,16 +101,7 @@ const SpedizioniTable = () => {
           {
             header: 'Destinatario',
             accessorKey: 'destinatario',
-          },
-          {
-            header: 'Stato',
-            accessorKey: 'stato',
-          },                    
-          {
-              header: '',
-              id: 'action',
-              cell: (props) => <ActionColumn row={props.row.original} />,
-          },
+          },                  
       ],
       []
   )
