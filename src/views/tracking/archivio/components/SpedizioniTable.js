@@ -96,7 +96,7 @@ const SpedizioniTable = () => {
             cell: (props) => {
                 const row = props.row.original
                 return <span className="font-bold">{row.altro_numero}</span>
-            },
+            },            
           },                               
           {
             header: 'Destinazione',

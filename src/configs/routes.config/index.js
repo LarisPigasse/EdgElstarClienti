@@ -12,9 +12,15 @@ export const protectedRoutes = [
         authority: [],
     },
     {
-        key: 'tracking',
-        path: '/tracking/',
-        component: React.lazy(() => import('views/tracking/Spedizioni')),
+        key: 'tracking.spedizioni',
+        path: '/tracking/spedizioni',
+        component: React.lazy(() => import('views/tracking/spedizioni')),
         authority: [CLIENTE],
-    },                
+    },
+    {
+        key: 'tracking.archivio',
+        path: '/tracking/archivio',
+        component: React.lazy(() => import('views/tracking/archivio')),
+        authority: [CLIENTE],
+    },                      
 ]

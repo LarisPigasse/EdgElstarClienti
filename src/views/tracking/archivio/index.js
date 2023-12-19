@@ -7,11 +7,11 @@ import SpedizioniTableTools from './components/SpedizioniTableTools'
 
 injectReducer('trackingSpedizioni', reducer)
 
-const Spedizioni = () => {
+const Archivio = () => {
     return (
         <AdaptableCard className="h-full" bodyClass="h-full">
              <div className="lg:flex items-center justify-between mb-4">
-                 <h3 className="mb-4 lg:mb-0">Spedizioni attive</h3>
+                 <h3 className="mb-4 lg:mb-0">Spedizioni archiviate</h3>
                  <SpedizioniTableTools />
              </div>
              <SpedizioniTable />
@@ -19,4 +19,4 @@ const Spedizioni = () => {
     )
 }
 
-export default Spedizioni
+export default Archivio

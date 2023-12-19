@@ -66,7 +66,7 @@ const ModalViewSpedizioni = () => {
                         <div className="mt-4 pt-2 border-t border-sky-300">Corriere: </div>
                         <div className="font-semibold text-red-600">{dataSpedizioni.corriere}</div>
                         <div className="mt-2">Codice: </div>
-                        <div className="font-semibold text-black">{dataSpedizioni.altro_numero}</div>
+                        <div className="font-semibold text-black">{dataSpedizioni.altro_numero}</div>                         
                         {dataSpedizioni.stato === 'CONSEGNATA' ? 
                             <div className="mt-4 pt-3 border-t text-indigo-600 font-bold border-sky-300">
                                 <div
@@ -80,7 +80,7 @@ const ModalViewSpedizioni = () => {
                                     </div>
                                 </div>
                             </div>
-                        : null}                       
+                        : null}
                     </div>
                     <div className="col-span-2 mb-2">
 

@@ -1,17 +1,17 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import { apiGetSpedizioniClienti, apiDeleteSpedizioni, apiInsertSpedizioni, 
+import { apiGetSpedizioniClientiArchiviate, apiDeleteSpedizioni, apiInsertSpedizioni, 
             apiUpdateSpedizioni, apiGetTrackingSpedizione,apiInsertSpedizioniTracking,
             apiDeleteSpedizioniTracking } from 'services/SpedizioniService'
 
 export const getSpedizioni = createAsyncThunk(
     'trackingSpedizioni/data/getSpedizioni',
     async (data) => {
-        const response = await apiGetSpedizioniClienti(data)
+        const response = await apiGetSpedizioniClientiArchiviate(data)
         return response.data
     }
 )
 
-export const getTracking = createAsyncThunk( 
+export const getTracking = createAsyncThunk(
     'trackingSpedizioni/data/getTracking',
     async (data) => {
         if(data === 0){
@@ -21,6 +21,7 @@ export const getTracking = createAsyncThunk(
         return response.data
     }
 )
+
 
 export const insertSpedizioni = async ( data ) => {
     const response = await apiInsertSpedizioni(data)
