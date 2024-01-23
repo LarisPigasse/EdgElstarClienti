@@ -1,5 +1,12 @@
 import ApiService from './ApiService'
 
+export async function apiGetPodPdf(id) {
+    return ApiService.fetchData({
+        url: `/spedizioni/pod/${id}`,
+        method: 'get',
+        responseType: 'blob'
+    })
+}
 
 export async function apiGetTrackingSpedizione(id) {
     return ApiService.fetchData({

@@ -83,14 +83,6 @@ const SpedizioniTable = () => {
               cell: (props) => <SpedizioniData row={props.row.original} />,
           },
           {
-            header: 'Cliente',
-            accessorKey: 'cliente',
-          },
-          {
-            header: 'Corriere',
-            accessorKey: 'corriere',
-          },
-          {
             header: 'Codice',
             accessorKey: 'altro_numero',
             cell: (props) => {
@@ -105,7 +97,19 @@ const SpedizioniTable = () => {
           {
             header: 'Destinatario',
             accessorKey: 'destinatario',
-          }, 
+          },
+          {
+            header: 'Indirizzo',
+            accessorKey: 'indirizzo',
+          },      
+          {
+            header: 'Cap',
+            accessorKey: 'cap',
+          },
+          {
+            header: 'Località',
+            accessorKey: 'citta',
+          },                                 
           {
             header: 'Stato',
             accessorKey: 'stato',

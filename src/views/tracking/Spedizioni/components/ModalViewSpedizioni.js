@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { Dialog, Button } from 'components/ui'
 import { toggleModalViewSpedizioni, setDataSpedizioni } from '../store/stateSlice'
-import { getTracking } from '../store/dataSlice'
+import { getTracking, getPodPdf } from '../store/dataSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import { BsFileEarmarkPdf } from 'react-icons/bs'
 
@@ -37,6 +37,25 @@ const ModalViewSpedizioni = () => {
         fetchData();
     }, [dataSpedizioni]);  
 
+    const handleClickPod = async () => {
+
+        if(dataSpedizioni.id_spedizione){
+            const response = await getPodPdf(dataSpedizioni.id_spedizione);
+            const file = new Blob([response], {type: 'application/pdf'});
+            const fileURL = URL.createObjectURL(file);
+
+            let larghezzaFinestra = 800;
+            let altezzaFinestra = 1024;
+            
+            // Calcola la posizione per centrare la nuova finestra
+            let sinistra = (window.screen.width/2)-(larghezzaFinestra/2);
+            let sopra = (window.screen.height/2)-(altezzaFinestra/2);
+            
+            // Apri la nuova finestra
+            window.open(fileURL, 'File', `toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=${larghezzaFinestra}, height=${altezzaFinestra}, top=${sopra}, left=${sinistra}`);
+        }
+    };
+
     return (
   
         <Dialog
@@ -70,6 +89,7 @@ const ModalViewSpedizioni = () => {
                         {dataSpedizioni.stato === 'CONSEGNATA' ? 
                             <div className="mt-4 pt-3 border-t text-indigo-600 font-bold border-sky-300">
                                 <div
+                                    onClick={handleClickPod}
                                     className=" w-20 flex items-center cursor-pointer border px-2 py-2 bg-sky-50 hover:bg-sky-100 border-gray-200 rounded-lg"
                                 >
                                     <div className="text-2xl pr-1">
