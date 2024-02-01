@@ -103,9 +103,9 @@ const SignInForm = (props) => {
                                     component={Checkbox}
                                     children="Rimani collegato"
                                 />
-                                <ActionLink to={forgotPasswordUrl}>
+                                {/* <ActionLink to={forgotPasswordUrl}>
                                     Password dimenticata?
-                                </ActionLink>
+                                </ActionLink> */}
                             </div>
                             <Button
                                 block
@@ -117,7 +117,8 @@ const SignInForm = (props) => {
                             </Button>
                             <div className="mt-4 text-center">
                                 <span>Non hai ancora un account? </span>
-                                <ActionLink to={signUpUrl}>Registrati</ActionLink>
+                                {/* <ActionLink to={signUpUrl}>Registrati</ActionLink> */}
+                                <span>Scrivi a <b>info@expressdeliverygroup.com</b></span>
                             </div>
                         </FormContainer>
                     </Form>

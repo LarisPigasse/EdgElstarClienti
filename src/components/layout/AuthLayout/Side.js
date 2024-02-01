@@ -16,7 +16,7 @@ const Side = ({ children, content, ...rest }) => {
                 <div className=' h-96'></div>
                 <div className=' h-16'></div>
                 <span >
-                    <img  src='logoEdgDark.png' alt={`${APP_NAME} logo`} />
+                    <img  src='../logoEdgDark.png' alt={`${APP_NAME} logo`} />
                 </span>
             </div>
             <div className="col-span-2 flex flex-col justify-center items-center bg-white dark:bg-gray-800">

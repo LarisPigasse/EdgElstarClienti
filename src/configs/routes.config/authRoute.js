@@ -25,6 +25,12 @@ const authRoute = [
         component: React.lazy(() => import('views/auth/ResetPassword')),
         authority: [],
     },
+    {
+        key: 'cercaSpedizioni',
+        path: `/noauth/spedizioni`,
+        component: React.lazy(() => import('views/noauth/spedizioni')),
+        authority: [],
+    },    
 ]
 
 export default authRoute
